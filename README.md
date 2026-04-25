@@ -1,6 +1,26 @@
 # OllamaMeter
 
-List, benchmark, and compare Ollama models — both local and cloud.
+<p align="left">
+  <img src="https://img.shields.io/badge/python-3.10+-blue.svg?style=flat-square" alt="Python 3.14+">
+  <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="MIT License">
+</p>
+
+Benchmark and compare Ollama models across local and cloud endpoints with rich, sortable tables.
+
+<p align="left">
+  <img src="assets/cloud.png" width="100%" alt="Cloud models">
+<img src="assets/local.png" width="100%" alt="Local models">
+</p>
+
+## Features
+
+- 📋 **List models** from local and cloud Ollama endpoints
+- 📊 **Rich tables** with sorting by modification date (newest first)
+- ⏱️ **Benchmark** time-to-first-token (TTF) and tokens-per-second (TPS)
+- 🔍 **Single-model mode** for targeted benchmarking
+- 🧪 **Multi-prompt averaging** — 3 prompts per model for robust stats
+- 🧬 **Embedding model support** — automatically uses `/api/embed` for local embedding models
+- 🎨 **Beautiful CLI** powered by `rich` + `InquirerPy`
 
 ## Installation
 
@@ -76,7 +96,7 @@ Benchmark **time-to-first-token** and **tokens-per-second**:
 ometer --cloud --ttf --tps
 ```
 
-Benchmark models in **parallel** for faster results (default is 1 - max 10):
+Benchmark models in **parallel** for faster results (default is 1 — max 10):
 
 ```bash
 ometer --cloud --ttf --tps --parallel 4
@@ -88,7 +108,7 @@ Show **per-run breakdown** in the table:
 ometer --cloud --ttf --tps --verbose
 ```
 
-Run with **fewer benchmark prompts** for faster results (default is 3 - max 3):
+Run with **fewer benchmark prompts** for faster results (default is 3 — max 3):
 
 ```bash
 ometer --cloud --ttf --tps --verbose --runs 1
@@ -139,16 +159,6 @@ EOF
 ```
 
 The cloud API key is **only needed for benchmarking cloud models**.
-
-## Features
-
-- 📋 **List models** from local and cloud Ollama endpoints
-- 📊 **Rich tables** with sorting by modification date (newest first)
-- ⏱️ **Benchmark** time-to-first-token (TTF) and tokens-per-second (TPS)
-- 🔍 **Single-model mode** for targeted benchmarking
-- 🧪 **Multi-prompt averaging** — 3 prompts per model for robust stats
-- 🧬 **Embedding model support** — automatically uses `/api/embed` for local embedding models
-- 🎨 **Beautiful CLI** powered by `rich` + `InquirerPy`
 
 ## CLI Commands
 
