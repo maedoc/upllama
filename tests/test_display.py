@@ -67,6 +67,27 @@ class TestFormatSize:
     def test_float_string(self):
         assert format_size("8.5B", "model") == "8.5B"
 
+    def test_zero_as_string(self):
+        assert format_size("0", "model") == "0"
+
+    def test_negative_integer(self):
+        assert format_size("-5", "model") == "-5"
+
+    def test_very_large_suffix(self):
+        assert format_size("100T", "model") == "100T"
+
+    def test_whitespace_padded_suffix(self):
+        assert format_size(" 8B", "model") == "0B"
+
+    def test_empty_string(self):
+        assert format_size("", "model") == "0B"
+
+    def test_none_with_name_suffix(self):
+        assert format_size(None, "mistral-7b-instruct") == "7B"
+
+    def test_decimal_in_name(self):
+        assert format_size(None, "llama3.2-3b") == "3B"
+
 
 class TestFormatCapabilities:
     def test_sorted(self):
@@ -303,12 +324,19 @@ class TestProcessSingleModel:
             "model_info": {"model.context_length": 8192},
         }
         benchmark = BenchmarkResult(
-            ttft=1.23, tps=45.6, error=None,
+            ttft=1.23,
+            tps=45.6,
+            error=None,
             runs=[{"prompt": "hi", "ttft": 1.23, "tps": 45.6, "error": None}],
         )
         row, export_row = process_single_model(
-            tag_model, show_data, benchmark,
-            show_ttft=True, show_tps=True, verbose=False, num_runs=1,
+            tag_model,
+            show_data,
+            benchmark,
+            show_ttft=True,
+            show_tps=True,
+            verbose=False,
+            num_runs=1,
             export_only=True,
         )
         assert row == []
@@ -606,8 +634,15 @@ class TestCollectPending:
     @pytest.mark.asyncio
     async def test_collects_results(self):
         export = ExportRow(
-            model="llama3", size="8B", context="4096", quant="Q4_0",
-            capabilities="completion", ttft=1.0, tps=50.0, error=None, runs=[],
+            model="llama3",
+            size="8B",
+            context="4096",
+            quant="Q4_0",
+            capabilities="completion",
+            ttft=1.0,
+            tps=50.0,
+            error=None,
+            runs=[],
         )
 
         async def _result(
@@ -621,9 +656,7 @@ class TestCollectPending:
         completed_exports: dict[int, ExportRow] = {}
         bench_errors: list[str] = []
 
-        await _collect_pending(
-            pending, completed_rows, completed_exports, bench_errors
-        )
+        await _collect_pending(pending, completed_rows, completed_exports, bench_errors)
 
         assert len(pending) == 0
         assert 0 in completed_rows
@@ -970,10 +1003,16 @@ class TestStreamTable:
     @pytest.mark.asyncio
     async def test_export_only_multi_model_benchmark(self):
         models = [
-            {"name": "llama3", "modified_at": "2024-01-01T00:00:00Z",
-             "details": {"parameter_size": "8B"}},
-            {"name": "mistral", "modified_at": "2024-01-01T00:00:00Z",
-             "details": {"parameter_size": "7B"}},
+            {
+                "name": "llama3",
+                "modified_at": "2024-01-01T00:00:00Z",
+                "details": {"parameter_size": "8B"},
+            },
+            {
+                "name": "mistral",
+                "modified_at": "2024-01-01T00:00:00Z",
+                "details": {"parameter_size": "7B"},
+            },
         ]
         show_data = {
             "capabilities": ["completion"],
@@ -988,7 +1027,9 @@ class TestStreamTable:
             if call_count == 1:
                 await asyncio.sleep(0.05)
             return BenchmarkResult(
-                ttft=1.0, tps=50.0, error=None,
+                ttft=1.0,
+                tps=50.0,
+                error=None,
                 runs=[{"prompt": "hi", "ttft": 1.0, "tps": 50.0, "error": None}],
             )
 
@@ -1024,10 +1065,16 @@ class TestStreamTable:
     @pytest.mark.asyncio
     async def test_live_multi_model_benchmark(self):
         models = [
-            {"name": "llama3", "modified_at": "2024-01-01T00:00:00Z",
-             "details": {"parameter_size": "8B"}},
-            {"name": "mistral", "modified_at": "2024-01-01T00:00:00Z",
-             "details": {"parameter_size": "7B"}},
+            {
+                "name": "llama3",
+                "modified_at": "2024-01-01T00:00:00Z",
+                "details": {"parameter_size": "8B"},
+            },
+            {
+                "name": "mistral",
+                "modified_at": "2024-01-01T00:00:00Z",
+                "details": {"parameter_size": "7B"},
+            },
         ]
         show_data = {
             "capabilities": ["completion"],
@@ -1042,7 +1089,9 @@ class TestStreamTable:
             if call_count == 1:
                 await asyncio.sleep(0.05)
             return BenchmarkResult(
-                ttft=1.0, tps=50.0, error=None,
+                ttft=1.0,
+                tps=50.0,
+                error=None,
                 runs=[{"prompt": "hi", "ttft": 1.0, "tps": 50.0, "error": None}],
             )
 

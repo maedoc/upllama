@@ -343,3 +343,40 @@ class TestBenchmarkModel:
                 client, cfg, "http://localhost:11434", "llama3", show_data
             )
         assert result.error is not None
+
+    @pytest.mark.asyncio
+    async def test_partial_runs_fail(self, httpx_mock: pytest_httpx.HTTPXMock):
+        for _ in range(2):
+            chunks = [
+                json.dumps(
+                    {
+                        "message": {"content": "hi"},
+                        "done": True,
+                        "eval_count": 10,
+                        "eval_duration": 1_000_000_000,
+                        "total_duration": 2_000_000_000,
+                    }
+                ),
+            ]
+            httpx_mock.add_response(
+                url="http://localhost:11434/api/chat",
+                content="\n".join(chunks).encode(),
+            )
+        httpx_mock.add_response(
+            url="http://localhost:11434/api/chat",
+            status_code=500,
+        )
+        cfg = Config("http://localhost:11434", "https://ollama.com", "", 3, 1)
+        show_data = {"capabilities": ["completion"]}
+        async with httpx.AsyncClient() as client:
+            result = await benchmark_model(
+                client, cfg, "http://localhost:11434", "llama3", show_data
+            )
+        assert len(result.runs) == 3
+        assert result.ttft is not None
+        assert result.tps is not None
+        assert result.error is not None
+        good_runs = [r for r in result.runs if not r.get("error")]
+        assert len(good_runs) == 2
+        bad_runs = [r for r in result.runs if r.get("error")]
+        assert len(bad_runs) == 1

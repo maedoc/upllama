@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 
@@ -127,24 +126,20 @@ class TestConfigInit:
 
 
 class TestConfigFromEnv:
-    _BASE_ENV = {
-        "OLLAMA_LOCAL_BASE_URL": "",
-        "OLLAMA_CLOUD_BASE_URL": "",
-        "OLLAMA_CLOUD_API_KEY": "",
-        "OLLAMAMETER_RUNS": "",
-        "OLLAMAMETER_PARALLEL": "",
-    }
+    _ENV_KEYS = (
+        "OLLAMA_LOCAL_BASE_URL",
+        "OLLAMA_CLOUD_BASE_URL",
+        "OLLAMA_CLOUD_API_KEY",
+        "OLLAMAMETER_RUNS",
+        "OLLAMAMETER_PARALLEL",
+    )
 
     @pytest.fixture()
-    def clean_env(self):
-        kept = {k: os.environ.pop(k, None) for k in self._BASE_ENV}
-        with patch("ometer.config._load_env"):
-            yield
-        for k, v in kept.items():
-            if v is not None:
-                os.environ[k] = v
-            elif k in os.environ:
-                del os.environ[k]
+    def clean_env(self, monkeypatch):
+        monkeypatch.setattr("ometer.config._load_env", lambda: None)
+        for key in self._ENV_KEYS:
+            monkeypatch.delenv(key, raising=False)
+        yield
 
     def test_from_env_defaults(self, clean_env):
         cfg = Config.from_env()
@@ -154,12 +149,12 @@ class TestConfigFromEnv:
         assert cfg.num_runs == 3
         assert cfg.num_parallel == 1
 
-    def test_from_env_custom_values(self, clean_env):
-        os.environ["OLLAMA_LOCAL_BASE_URL"] = "http://host:1234"
-        os.environ["OLLAMA_CLOUD_BASE_URL"] = "https://cloud.example.com"
-        os.environ["OLLAMA_CLOUD_API_KEY"] = "secret"
-        os.environ["OLLAMAMETER_RUNS"] = "2"
-        os.environ["OLLAMAMETER_PARALLEL"] = "5"
+    def test_from_env_custom_values(self, clean_env, monkeypatch):
+        monkeypatch.setenv("OLLAMA_LOCAL_BASE_URL", "http://host:1234")
+        monkeypatch.setenv("OLLAMA_CLOUD_BASE_URL", "https://cloud.example.com")
+        monkeypatch.setenv("OLLAMA_CLOUD_API_KEY", "secret")
+        monkeypatch.setenv("OLLAMAMETER_RUNS", "2")
+        monkeypatch.setenv("OLLAMAMETER_PARALLEL", "5")
         cfg = Config.from_env()
         assert cfg.local_base_url == "http://host:1234"
         assert cfg.cloud_base_url == "https://cloud.example.com"
@@ -167,19 +162,19 @@ class TestConfigFromEnv:
         assert cfg.num_runs == 2
         assert cfg.num_parallel == 5
 
-    def test_from_env_invalid_runs_falls_back(self, clean_env):
-        os.environ["OLLAMAMETER_RUNS"] = "abc"
+    def test_from_env_invalid_runs_falls_back(self, clean_env, monkeypatch):
+        monkeypatch.setenv("OLLAMAMETER_RUNS", "abc")
         cfg = Config.from_env()
         assert cfg.num_runs == 3
 
-    def test_from_env_invalid_parallel_falls_back(self, clean_env):
-        os.environ["OLLAMAMETER_PARALLEL"] = "xyz"
+    def test_from_env_invalid_parallel_falls_back(self, clean_env, monkeypatch):
+        monkeypatch.setenv("OLLAMAMETER_PARALLEL", "xyz")
         cfg = Config.from_env()
         assert cfg.num_parallel == 1
 
-    def test_from_env_overrides_with_params(self, clean_env):
-        os.environ["OLLAMAMETER_RUNS"] = "3"
-        os.environ["OLLAMAMETER_PARALLEL"] = "1"
+    def test_from_env_overrides_with_params(self, clean_env, monkeypatch):
+        monkeypatch.setenv("OLLAMAMETER_RUNS", "3")
+        monkeypatch.setenv("OLLAMAMETER_PARALLEL", "1")
         cfg = Config.from_env(runs=1, parallel=4)
         assert cfg.num_runs == 1
         assert cfg.num_parallel == 4

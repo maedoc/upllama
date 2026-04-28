@@ -63,7 +63,7 @@ def format_float_or_na(val: float | None) -> str:
 def build_table(
     title: str, show_ttft: bool, show_tps: bool, verbose: bool, num_runs: int
 ) -> Table:
-    table = Table(title=title, title_style="bold cyan")
+    table = Table(title=title, title_style="bold cyan", show_lines=True)
     table.add_column("Model", style="cyan", no_wrap=True)
     table.add_column("Size", justify="right", style="green")
     table.add_column("Context", justify="right", style="yellow")
@@ -172,7 +172,7 @@ def _build_colored_table(
     ttft_thresholds = _thresholds(ttft_values)
     tps_thresholds = _thresholds(tps_values)
 
-    for row in rows:
+    for idx, row in enumerate(rows):
         styled: list[str | Text] = list(row)
         for i in ttft_indices:
             styled[i] = _color(row[i], ttft_thresholds, lower_is_better=True)
@@ -290,7 +290,13 @@ async def _benchmark_model_task(
             errors.append(f"{model['name']}: {bench.error}")
 
     row, export_row = process_single_model(
-        model, show_data, bench, show_ttft, show_tps, verbose, config.num_runs,
+        model,
+        show_data,
+        bench,
+        show_ttft,
+        show_tps,
+        verbose,
+        config.num_runs,
         export_only=export_only,
     )
     return idx, row, export_row, errors

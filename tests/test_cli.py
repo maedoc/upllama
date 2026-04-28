@@ -498,10 +498,7 @@ class TestMain:
             patch("ometer.cli.console") as mock_console,
         ):
             await main(None, False, False, False, None, config)
-            assert (
-                any(c == () for c in mock_console.print.call_args_list)
-                or mock_console.print.call_count >= 1
-            )
+            mock_console.print.assert_any_call()
 
     @pytest.mark.asyncio
     async def test_both_local_and_cloud_models(self):
