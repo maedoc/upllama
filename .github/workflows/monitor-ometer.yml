@@ -1,0 +1,63 @@
+name: Monitor Ometer Benchmark Workflow
+
+# Run every 15 minutes to check the latest benchmark run and retry if it failed.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write   # needed to rerun a failed workflow
+      contents: read
+    steps:
+      - name: Checkout repository (optional)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install GitHub CLI
+        uses: cli/cli-action@v2
+        with:
+          version: latest
+
+      - name: Authenticate gh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh auth status || gh auth login --with-token <<< "${GITHUB_TOKEN}"
+
+      - name: Identify the benchmark workflow ID
+        id: wf
+        run: |
+          # The exact workflow name as defined in .github/workflows/ometer-gh-pages.yml
+          WORKFLOW_NAME="Ollama Benchmark → GitHub Pages"
+          WF_ID=$(gh api repos/${GITHUB_REPOSITORY}/actions/workflows --jq ".workflows[] | select(.name==\"$WORKFLOW_NAME\") | .id")
+          echo "workflow_id=$WF_ID" >> $GITHUB_OUTPUT
+
+      - name: Get latest run of the benchmark workflow
+        id: latest
+        run: |
+          WF_ID=${{ steps.wf.outputs.workflow_id }}
+          # Grab the most recent run (per_page=1)
+          RUN_ID=$(gh api repos/${GITHUB_REPOSITORY}/actions/workflows/$WF_ID/runs?per_page=1 --jq ".workflow_runs[0].id")
+          STATUS=$(gh api repos/${GITHUB_REPOSITORY}/actions/runs/$RUN_ID --jq ".status")
+          CONCLUSION=$(gh api repos/${GITHUB_REPOSITORY}/actions/runs/$RUN_ID --jq ".conclusion")
+          echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+          echo "conclusion=$CONCLUSION" >> $GITHUB_OUTPUT
+
+      - name: Rerun if failed
+        if: steps.latest.outputs.status == 'completed' && steps.latest.outputs.conclusion != 'success'
+        run: |
+          echo "Latest benchmark run ${{ steps.latest.outputs.run_id }} ended with ${{ steps.latest.outputs.conclusion }} – triggering a rerun."
+          gh api -X POST repos/${GITHUB_REPOSITORY}/actions/runs/${{ steps.latest.outputs.run_id }}/rerun
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Log success state
+        if: steps.latest.outputs.status != 'completed' || steps.latest.outputs.conclusion == 'success'
+        run: |
+          echo "Latest benchmark run is ${{ steps.latest.outputs.status }} with conclusion ${{ steps.latest.outputs.conclusion }} – no action required."
