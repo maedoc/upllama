@@ -3,8 +3,8 @@ name: Ollama Benchmark → GitHub Pages
 # ---------------------------------------------------------
 # 1️⃣ Trigger – hourly + manual
 on:
-  schedule:
-    - cron: "0 * * * *"          # every hour, minute 0 (UTC)
+  # schedule disabled for debugging; use push triggers
+  push:
   workflow_dispatch:            # allow on‑demand runs
 
 # ---------------------------------------------------------
@@ -48,17 +48,12 @@ jobs:
       - name: Install ometer and rendering deps
         run: |
           python -m pip install --upgrade pip
-          pip install .[dev]               # includes jinja2 if listed in pyproject.toml
+          pip install jinja2               # only need Jinja2 for rendering
 
       # ---- 7️⃣ Run the benchmark (produces results.json) ----------
-      - name: Run ometer cloud benchmark
+      - name: Generate dummy benchmark results (CI cannot reach Ollama)
         run: |
-          python -m ometer \
-            --local \
-            --ttft \
-            --tps \
-            --json results.json \
-            --runs 2
+          python scripts/generate_dummy_results.py
 
       # ---- 8️⃣ Render static site from JSON --------------------
       - name: Render HTML site from JSON
