@@ -7,6 +7,7 @@ from __future__ import annotations
 import json
 import pathlib
 import sys
+import os
 from datetime import datetime, timezone
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -37,7 +38,19 @@ def render(results: list[dict]) -> None:
     )
     tmpl = env.get_template("index.html.j2")
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    rendered = tmpl.render(results=results, generated_at=now)
+
+    # Pull GitHub context from environment variables injected by the workflow
+    github_ctx = {
+        "repository": os.getenv("GITHUB_REPOSITORY", ""),
+        "run_id": os.getenv("GITHUB_RUN_ID", ""),
+        "run_number": os.getenv("GITHUB_RUN_NUMBER", ""),
+    }
+
+    rendered = tmpl.render(
+        results=results,
+        generated_at=now,
+        github=github_ctx,
+    )
 
     SITE_DIR.mkdir(parents=True, exist_ok=True)
 
