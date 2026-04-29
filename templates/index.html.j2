@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ollama Benchmark – Latest Results</title>
+  <style>
+    body {font-family:Helvetica,Arial,sans-serif;margin:2rem;}
+    table {border-collapse:collapse;width:100%;margin-top:1rem;}
+    th, td {border:1px solid #ddd;padding:0.5rem;text-align:left;}
+    th {background:#f4f4f4;}
+    .error {color:#c00;}
+  </style>
+</head>
+<body>
+  <h1>Ollama Cloud Benchmark – Latest Run</h1>
+  <p>Generated {{ generated_at }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Size</th>
+        <th>Context</th>
+        <th>Quant</th>
+        <th>Capabilities</th>
+        <th>TTFT (s)</th>
+        <th>TPS</th>
+        <th>Error</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in results %}
+      <tr>
+        <td>{{ row.model }}</td>
+        <td>{{ row.size }}</td>
+        <td>{{ row.context }}</td>
+        <td>{{ row.quant }}</td>
+        <td>{{ row.capabilities }}</td>
+        <td>{{ "%.2f"|format(row.ttft) if row.ttft is not none else "n/a" }}</td>
+        <td>{{ "%.2f"|format(row.tps) if row.tps is not none else "n/a" }}</td>
+        <td class="{% if row.error %}error{% endif %}">{{ row.error | default("—") }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p>
+    <small>
+      Raw data: <a href="results.json">results.json</a>
+      (<a href="https://github.com/{{ github.repository }}/actions/runs/{{ github.run_id }}">GitHub run {{ github.run_number }}</a>)
+    </small>
+  </p>
+</body>
+</html>
