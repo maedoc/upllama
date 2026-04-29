@@ -54,7 +54,7 @@ jobs:
       - name: Run ometer cloud benchmark
         run: |
           python -m ometer \
-            --cloud \
+            --local \
             --ttft \
             --tps \
             --json results.json \
