@@ -16,7 +16,7 @@ concurrency:
 # ---------------------------------------------------------
 # 3️⃣ Permissions – minimal
 permissions:
-  contents: read      # checkout
+  contents: write      # needed to push to gh‑pages branch
   pages: write        # push to gh‑pages (via the gh‑pages action)
   id-token: write     # needed by the gh‑pages action for authentication
 
