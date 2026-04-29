@@ -44,16 +44,17 @@ jobs:
           python-version: "3.12"
           cache: "pip"
 
-      # ---- 6️⃣ Install package + Jinja2 ---------------
+      # ---- 6️⃣ Install ometer, its deps, and Jinja2 ---------------
       - name: Install ometer and rendering deps
         run: |
           python -m pip install --upgrade pip
-          pip install jinja2               # only need Jinja2 for rendering
+          python -m pip install hatchling   # needed for building the package
+          pip install .[dev]               # install ometer package and dev deps (includes Jinja2)
 
-      # ---- 7️⃣ Run the benchmark (produces results.json) ----------
-      - name: Generate dummy benchmark results (CI cannot reach Ollama)
+      # ---- 7️⃣ Run the real benchmark (produces results.json) ----------
+      - name: Run ometer benchmark and export JSON
         run: |
-          python scripts/generate_dummy_results.py
+          python -m ometer --json results.json --ttft --tps
 
       # ---- 8️⃣ Render static site from JSON --------------------
       - name: Render HTML site from JSON
