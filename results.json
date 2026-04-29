@@ -1,0 +1,14 @@
+[
+  {
+    "model": "dummy-model:latest",
+    "size": "1B",
+    "context": "2048",
+    "quant": "none",
+    "capabilities": "chat",
+    "ttft": 0.12,
+    "tps": 45.6,
+    "error": null,
+    "runs": [],
+    "modified_at": "2024-01-01T00:00:00Z"
+  }
+]
