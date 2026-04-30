@@ -66,8 +66,14 @@ def sparkline_svg(
     else:
         pad = (max_v - min_v) * 0.1 if min_v != max_v else 0.1
 
-    ymin = min_v - pad
-    ymax = max_v + pad
+    # Always include the requested reference values in the visible domain
+    ref_vals_t = [transform(ref) for ref in refs or []]
+    if ref_vals_t:
+        ymin = min(min_v, *ref_vals_t) - pad
+        ymax = max(max_v, *ref_vals_t) + pad
+    else:
+        ymin = min_v - pad
+        ymax = max_v + pad
     rng = ymax - ymin
     if rng == 0:
         rng = 1.0
@@ -130,8 +136,8 @@ def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[s
         name = r.get("model")
         sparklines[name] = {}
         for metric, color, refs, unit in (
-            ("ttft", "#4ade80", [0.1, 1.0, 10.0], "s"),
-            ("tps", "#60a5fa", [1.0, 10.0, 100.0], ""),
+            ("ttft", "#4ade80", [1.0, 10.0], "s"),
+            ("tps", "#60a5fa", [10.0, 100.0], ""),
         ):
             vals = model_history.get(name, {}).get(metric, [])
             if len(vals) >= 2:
