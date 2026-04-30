@@ -9,11 +9,13 @@
     th, td {border:1px solid #ddd;padding:0.5rem;text-align:left;}
     th {background:#f4f4f4;}
     .error {color:#c00;}
+    .sparkline { display:block; margin-top:4px; }
+    .metric { font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body>
   <h1>Ollama Cloud Benchmark – Latest Run</h1>
-  <p>Generated 2026-04-30 09:32 UTC</p>
+  <p>Generated 2026-04-30 09:43 UTC</p>
 
   <table>
     <thead>
@@ -35,8 +37,14 @@
         <td>1048576</td>
         <td>FP8</td>
         <td>completion, thinking, tools</td>
-        <td>0.54</td>
-        <td>64.24</td>
+        <td class="metric">
+          0.64
+          
+        </td>
+        <td class="metric">
+          50.29
+          
+        </td>
         <td class="">—</td>
       </tr>
       <tr>
@@ -45,8 +53,14 @@
         <td>202752</td>
         <td>FP8</td>
         <td>completion, thinking, tools</td>
-        <td>1.69</td>
-        <td>17.50</td>
+        <td class="metric">
+          1.65
+          
+        </td>
+        <td class="metric">
+          93.57
+          
+        </td>
         <td class="">—</td>
       </tr>
       <tr>
@@ -55,8 +69,14 @@
         <td>262144</td>
         <td>INT4</td>
         <td>completion, thinking, tools, vision</td>
-        <td>7.31</td>
-        <td>23.11</td>
+        <td class="metric">
+          0.86
+          
+        </td>
+        <td class="metric">
+          43.55
+          
+        </td>
         <td class="">—</td>
       </tr>
     </tbody>
@@ -64,8 +84,9 @@
 
   <p>
     <small>
-      Raw data: <a href="results.json">results.json</a>
-      (<a href="https://github.com/maedoc/upllama/actions/runs/25157790934">GitHub run 14</a>)
+      Raw data: <a href="results.json">results.json</a> |
+      History: <a href="history.json">history.json</a>
+      (<a href="https://github.com/maedoc/upllama/actions/runs/25158462356">GitHub run 15</a>)
     </small>
   </p>
 </body>
