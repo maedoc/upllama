@@ -49,12 +49,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install hatchling   # needed for building the package
-          pip install .[dev]               # install ometer package and dev deps (includes Jinja2)
+          pip install .[site]            # install ometer + Jinja2 rendering deps
 
       # ---- 7️⃣ Run the real benchmark (produces results.json) ----------
       - name: Run ometer benchmark and export JSON
         run: |
-          python -m ometer --json results.json --ttft --tps
+          python -m ometer --json results.json --ttft --tps --model kimi-k2.6:cloud glm-5.1:cloud gpt-oss:120b-cloud
 
       # ---- 8️⃣ Render static site from JSON --------------------
       - name: Render HTML site from JSON
