@@ -3,7 +3,8 @@ name: Ollama Benchmark → GitHub Pages
 # ---------------------------------------------------------
 # 1️⃣ Trigger – hourly + manual
 on:
-  # schedule disabled for debugging; use push triggers
+  schedule:
+    - cron: "0 * * * *"         # hourly
   push:
   workflow_dispatch:            # allow on‑demand runs
 
@@ -54,7 +55,7 @@ jobs:
       # ---- 7️⃣ Run the real benchmark (produces results.json) ----------
       - name: Run ometer benchmark and export JSON
         run: |
-          python -m ometer --json results.json --ttft --tps --model kimi-k2.6:cloud glm-5.1:cloud gpt-oss:120b-cloud
+          python -m ometer --json results.json --ttft --tps --model glm-5.1:cloud kimi-k2.6:cloud deepseek-v4-flash:cloud
 
       # ---- 8️⃣ Render static site from JSON --------------------
       - name: Render HTML site from JSON
