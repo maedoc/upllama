@@ -4,7 +4,7 @@ name: Ollama Benchmark → GitHub Pages
 # 1️⃣ Trigger – hourly + manual
 on:
   schedule:
-    - cron: "0 * * * *"         # hourly
+    - cron: "*/30 * * * *"         # every 30 minutes
   push:
   workflow_dispatch:            # allow on‑demand runs
 
