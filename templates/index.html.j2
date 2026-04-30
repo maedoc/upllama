@@ -24,7 +24,6 @@
         <th>Size</th>
         <th>Context</th>
         <th>Quant</th>
-        <th>Capabilities</th>
         <th>TTFT (s)</th>
         <th>TPS</th>
         <th>Error</th>
@@ -37,7 +36,6 @@
         <td>{{ row.size }}</td>
         <td>{{ row.context }}</td>
         <td>{{ row.quant }}</td>
-        <td>{{ row.capabilities }}</td>
         <td class="metric">
           {{ "%.2f"|format(row.ttft) if row.ttft is not none else "n/a" }}
           {{ sparklines[row.model].ttft | safe }}
