@@ -209,5 +209,40 @@
         "tps": 31.326797777666982
       }
     ]
+  },
+  {
+    "timestamp": "2026-04-30T12:37:20.880219+00:00",
+    "results": [
+      {
+        "model": "deepseek-v4-flash",
+        "size": "158B",
+        "context": "1048576",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-24T00:00:00Z",
+        "ttft": 1.2134966630000008,
+        "tps": 23.58511768661005
+      },
+      {
+        "model": "glm-5.1",
+        "size": "756B",
+        "context": "202752",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-07T08:00:00-08:00",
+        "ttft": 6.184499150999993,
+        "tps": 82.16185683469692
+      },
+      {
+        "model": "kimi-k2.6",
+        "size": "1T",
+        "context": "262144",
+        "quant": "INT4",
+        "capabilities": "completion, thinking, tools, vision",
+        "modified_at": "2026-03-31T00:00:00Z",
+        "ttft": 1.3132039263333581,
+        "tps": 34.44159537565532
+      }
+    ]
   }
 ]
