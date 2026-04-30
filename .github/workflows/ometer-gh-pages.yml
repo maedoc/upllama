@@ -57,14 +57,22 @@ jobs:
         run: |
           python -m ometer --json results.json --ttft --tps --model glm-5.1:cloud kimi-k2.6:cloud deepseek-v4-flash:cloud
 
-      # ---- 8️⃣ Render static site from JSON --------------------
+      # ---- 8️⃣ Retrieve existing history from gh-pages ------------
+      - name: Checkout gh-pages branch for history
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: _gh_pages
+        continue-on-error: true
+
+      # ---- 9️⃣ Render static site from JSON --------------------
       - name: Render HTML site from JSON
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_RUN_ID: ${{ github.run_id }}
           GITHUB_RUN_NUMBER: ${{ github.run_number }}
         run: |
-          python scripts/render_results.py
+          python scripts/render_results.py --history _gh_pages/history.json
 
       # ---- 9️⃣ (Optional) Keep raw JSON as an artifact for debugging
       - name: Upload raw JSON artifact
@@ -84,4 +92,4 @@ jobs:
           publish_branch: gh-pages
           commit_message: "🤖 Update benchmark – run ${{ github.run_number }}"
           force_orphan: false
-          keep_files: false
+          keep_files: true

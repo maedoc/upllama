@@ -9,6 +9,8 @@
     th, td {border:1px solid #ddd;padding:0.5rem;text-align:left;}
     th {background:#f4f4f4;}
     .error {color:#c00;}
+    .sparkline { display:block; margin-top:4px; }
+    .metric { font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body>
@@ -36,8 +38,14 @@
         <td>{{ row.context }}</td>
         <td>{{ row.quant }}</td>
         <td>{{ row.capabilities }}</td>
-        <td>{{ "%.2f"|format(row.ttft) if row.ttft is not none else "n/a" }}</td>
-        <td>{{ "%.2f"|format(row.tps) if row.tps is not none else "n/a" }}</td>
+        <td class="metric">
+          {{ "%.2f"|format(row.ttft) if row.ttft is not none else "n/a" }}
+          {{ sparklines[row.model].ttft | safe }}
+        </td>
+        <td class="metric">
+          {{ "%.2f"|format(row.tps) if row.tps is not none else "n/a" }}
+          {{ sparklines[row.model].tps | safe }}
+        </td>
         <td class="{% if row.error %}error{% endif %}">{{ row.error | default("—") }}</td>
       </tr>
       {% endfor %}
@@ -46,7 +54,8 @@
 
   <p>
     <small>
-      Raw data: <a href="results.json">results.json</a>
+      Raw data: <a href="results.json">results.json</a> |
+      History: <a href="history.json">history.json</a>
       (<a href="https://github.com/{{ github.repository }}/actions/runs/{{ github.run_id }}">GitHub run {{ github.run_number }}</a>)
     </small>
   </p>
