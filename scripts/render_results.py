@@ -6,6 +6,7 @@ Uses Jinja2 for templating – only a few lines of logic.
 from __future__ import annotations
 import argparse
 import json
+import math
 import pathlib
 import sys
 import os
@@ -30,31 +31,87 @@ def load_results() -> list[dict]:
     return data
 
 
-def sparkline_svg(values: list[float], width: int = 80, height: int = 24, color: str = "#4ade80") -> str:
-    """Return a tiny inline SVG sparkline."""
+def sparkline_svg(
+    values: list[float],
+    *,
+    width: int = 100,
+    height: int = 32,
+    color: str = "#4ade80",
+    scale: str = "linear",
+    refs: list[float] | None = None,
+    unit: str = "",
+) -> str:
+    """Return a tiny inline SVG sparkline with optional log scale & reference grid lines."""
     if len(values) < 2:
         return ""
-    min_v = min(values)
-    max_v = max(values)
-    rng = max_v - min_v
-    if rng == 0:
-        y_coords = [height / 2] * len(values)
+
+    plot_left = 2
+    plot_right = 72
+    plot_top = 6
+    plot_bottom = height - 2
+    plot_h = plot_bottom - plot_top
+
+    if scale == "log":
+        transform = lambda v: math.log10(max(v, 1e-9))
     else:
-        y_coords = [height - ((v - min_v) / rng) * height for v in values]
-    step = width / (len(values) - 1)
-    points = " ".join(f"{i * step:.1f},{y:.1f}" for i, y in enumerate(y_coords))
-    title = " ".join(f"{v:.2f}" for v in values)
+        transform = lambda v: v
+
+    values_t = [transform(v) for v in values]
+
+    min_v = min(values_t)
+    max_v = max(values_t)
+
+    if scale == "log":
+        pad = 0.15
+    else:
+        pad = (max_v - min_v) * 0.1 if min_v != max_v else 0.1
+
+    ymin = min_v - pad
+    ymax = max_v + pad
+    rng = ymax - ymin
+    if rng == 0:
+        rng = 1.0
+
+    def y_for(val_t: float) -> float:
+        return plot_bottom - ((val_t - ymin) / rng) * plot_h
+
+    step = (plot_right - plot_left) / (len(values) - 1)
+    points = " ".join(
+        f"{plot_left + i * step:.1f},{y_for(v):.1f}" for i, v in enumerate(values_t)
+    )
+    title = " ".join(f"{v:.2f}{unit}" for v in values)
+
+    # Reference lines & labels
+    ref_svg = ""
+    if refs:
+        for ref in refs:
+            if ref <= 0 and scale == "log":
+                continue
+            ref_t = transform(ref)
+            if ref_t < ymin or ref_t > ymax:
+                continue
+            ry = y_for(ref_t)
+            label = f"{ref:g}{unit}"
+            ref_svg += (
+                f'<line x1="{plot_left}" y1="{ry:.1f}" x2="{plot_right}" y2="{ry:.1f}" '
+                f'stroke="#bbb" stroke-width="0.5" stroke-dasharray="2,2" stroke-opacity="0.5" />'
+            )
+            ref_svg += (
+                f'<text x="{plot_right + 2}" y="{ry:.1f}" font-size="7" fill="#999" '
+                f'font-family="Arial,Helvetica,sans-serif" dominant-baseline="middle">{label}</text>'
+            )
+
     return (
         f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
         f'class="sparkline" title="{title}">'
-        f'<polyline fill="none" stroke="{color}" stroke-width="2" points="{points}"/>'
+        f'{ref_svg}'
+        f'<polyline fill="none" stroke="{color}" stroke-width="1.5" points="{points}" />'
         f'</svg>'
     )
 
 
 def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[str, dict[str, str]]:
     """Build sparkline SVGs for each model/metric from 24 h history."""
-    # Aggregate historical values per model
     model_history: dict[str, dict[str, list[float]]] = {}
     for entry in history:
         for r in entry.get("results", []):
@@ -72,11 +129,19 @@ def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[s
     for r in current_results:
         name = r.get("model")
         sparklines[name] = {}
-        for metric, color in (("ttft", "#4ade80"), ("tps", "#60a5fa")):
+        for metric, color, refs, unit in (
+            ("ttft", "#4ade80", [0.1, 1.0, 10.0], "s"),
+            ("tps", "#60a5fa", [1.0, 10.0, 100.0], ""),
+        ):
             vals = model_history.get(name, {}).get(metric, [])
-            # Need at least two points to draw a line
             if len(vals) >= 2:
-                sparklines[name][metric] = sparkline_svg(vals, color=color)
+                sparklines[name][metric] = sparkline_svg(
+                    vals,
+                    color=color,
+                    scale="log",
+                    refs=refs,
+                    unit=unit,
+                )
             else:
                 sparklines[name][metric] = ""
     return sparklines
