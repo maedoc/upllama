@@ -6,8 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.6810396950000026,
-    "tps": 66.61325832920745
+    "ttft": 0.5871149686666589,
+    "tps": 23.41622200285798
   },
   {
     "model": "glm-5.1",
@@ -16,8 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 1.1688667926666672,
-    "tps": 55.4755429780181
+    "ttft": 2.5691285070000256,
+    "tps": 18.33845339205823
   },
   {
     "model": "kimi-k2.6",
@@ -26,7 +26,7 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 1.6332475619999987,
-    "tps": 46.82871363398262
+    "ttft": 2.56550726333334,
+    "tps": 20.653664410592015
   }
 ]
