@@ -1,5 +1,15 @@
 [
   {
+    "model": "deepseek-v4-flash",
+    "size": "158B",
+    "context": "1048576",
+    "quant": "FP8",
+    "capabilities": "completion, thinking, tools",
+    "modified_at": "2026-04-24T00:00:00Z",
+    "ttft": 0.6331632799999909,
+    "tps": 50.70274813651326
+  },
+  {
     "model": "deepseek-v4-pro",
     "size": "158B",
     "context": "1048576",
@@ -8,17 +18,7 @@
     "modified_at": "2026-04-24T00:00:00Z",
     "ttft": null,
     "tps": null,
-    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
-  },
-  {
-    "model": "deepseek-v4-flash",
-    "size": "158B",
-    "context": "1048576",
-    "quant": "FP8",
-    "capabilities": "completion, thinking, tools",
-    "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.9814881129999975,
-    "tps": 41.07826129302275
+    "error": "Server error '500 Internal Server Error' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
   },
   {
     "model": "glm-5.1",
@@ -27,8 +27,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 45.490804271,
-    "tps": 21.93391784099076
+    "ttft": 1.036431523999994,
+    "tps": 12.074942851636502
   },
   {
     "model": "gemma4:31b",
@@ -37,8 +37,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.6453112030000057,
-    "tps": 25.735087681226876
+    "ttft": 0.4566035269999986,
+    "tps": 46.276305952594
   },
   {
     "model": "kimi-k2.6",
@@ -47,8 +47,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 0.6405114970000056,
-    "tps": 26.5334732982644
+    "ttft": 0.9971509490000017,
+    "tps": 75.81008550727428
   },
   {
     "model": "minimax-m2.5",
@@ -57,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 0.32486846199999775,
-    "tps": 24.24693995433403
+    "ttft": 6.889714635999994,
+    "tps": 38.41482845620206
   }
 ]
