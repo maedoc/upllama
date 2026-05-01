@@ -1,23 +1,23 @@
 [
   {
-    "model": "deepseek-v4-pro",
-    "size": "158B",
-    "context": "1048576",
-    "quant": "FP8",
-    "capabilities": "completion, thinking, tools",
-    "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.5327647180000099,
-    "tps": 59.34982544978472
-  },
-  {
     "model": "deepseek-v4-flash",
     "size": "158B",
     "context": "1048576",
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 1.3540781270000366,
-    "tps": 42.111198587176254
+    "ttft": 0.8382873239999924,
+    "tps": 40.556575676429766
+  },
+  {
+    "model": "deepseek-v4-pro",
+    "size": "158B",
+    "context": "1048576",
+    "quant": "FP8",
+    "capabilities": "completion, thinking, tools",
+    "modified_at": "2026-04-24T00:00:00Z",
+    "ttft": 0.5536923020000017,
+    "tps": 8.002327093852266
   },
   {
     "model": "glm-5.1",
@@ -26,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 0.850158237999949,
-    "tps": 20.310467911476636
+    "ttft": 0.414867074,
+    "tps": 66.19656804061307
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.40559063599999945,
-    "tps": 56.53407751125286
+    "ttft": 0.3908652249999989,
+    "tps": 25.227775074192326
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +46,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 0.8145971239999881,
-    "tps": 79.85482448295242
+    "ttft": 2.7375245949999965,
+    "tps": 57.24025952451402
   },
   {
     "model": "minimax-m2.5",
@@ -56,7 +56,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 0.252883144000009,
-    "tps": 65.66764218029952
+    "ttft": 0.3772609370000026,
+    "tps": 60.46850913093396
   }
 ]
