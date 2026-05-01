@@ -35,6 +35,7 @@ def sparkline_svg(
     values: list[float],
     *,
     timestamps: list[datetime] | None = None,
+    error_timestamps: list[datetime] | None = None,
     width: int = 100,
     height: int = 38,
     color: str = "#4ade80",
@@ -42,7 +43,7 @@ def sparkline_svg(
     refs: list[float] | None = None,
     unit: str = "",
 ) -> str:
-    """Return a tiny inline SVG sparkline with optional log scale, reference grid lines, and time labels."""
+    """Return a tiny inline SVG sparkline with optional log scale, reference grid lines, time labels, and error bars."""
     if len(values) < 2:
         return ""
 
@@ -83,22 +84,31 @@ def sparkline_svg(
     def y_for(val_t: float) -> float:
         return plot_bottom - ((val_t - ymin) / rng) * plot_h
 
-    # Compute x positions based on actual timestamps if available
-    if timestamps and len(timestamps) == len(values):
-        ts_oldest = min(timestamps)
-        ts_newest = max(timestamps)
-        ts_span = (ts_newest - ts_oldest).total_seconds()
-        if ts_span > 0:
-            xs = [plot_left + ((ts - ts_oldest).total_seconds() / ts_span) * plot_w for ts in timestamps]
-        else:
-            step = plot_w / (len(values) - 1)
-            xs = [plot_left + i * step for i in range(len(values))]
+    # Compute time span from all timestamps (data + errors)
+    all_timestamps: list[datetime] = list(timestamps or []) + list(error_timestamps or [])
+    ts_oldest = min(all_timestamps) if all_timestamps else None
+    ts_newest = max(all_timestamps) if all_timestamps else None
+    ts_span = (ts_newest - ts_oldest).total_seconds() if ts_oldest and ts_newest else 0
+
+    if timestamps and len(timestamps) == len(values) and ts_span > 0:
+        xs = [plot_left + ((ts - ts_oldest).total_seconds() / ts_span) * plot_w for ts in timestamps]
     else:
         step = plot_w / (len(values) - 1)
         xs = [plot_left + i * step for i in range(len(values))]
 
     points = " ".join(f"{x:.1f},{y_for(v):.1f}" for x, v in zip(xs, values_t))
     title = " ".join(f"{v:.2f}{unit}" for v in values)
+
+    # Error bars – vertical red lines at error timestamps
+    error_svg = ""
+    if error_timestamps and ts_span > 0:
+        for ets in error_timestamps:
+            ratio = (ets - ts_oldest).total_seconds() / ts_span
+            ex = plot_left + ratio * plot_w
+            error_svg += (
+                f'<line x1="{ex:.1f}" y1="{plot_top}" x2="{ex:.1f}" y2="{plot_bottom}" '
+                f'stroke="#ef4444" stroke-width="1.5" opacity="0.7" />'
+            )
 
     # Reference lines & labels
     ref_svg = ""
@@ -122,29 +132,26 @@ def sparkline_svg(
 
     # Time labels at the bottom
     time_svg = ""
-    if timestamps and len(timestamps) >= 2:
-        ts_oldest = min(timestamps)
-        ts_newest = max(timestamps)
-        ts_span = (ts_newest - ts_oldest).total_seconds()
-        if ts_span > 0:
-            for hours_ago in [2, 6, 12, 18]:
-                label_ts = ts_newest - timedelta(hours=hours_ago)
-                if label_ts >= ts_oldest:
-                    ratio = (label_ts - ts_oldest).total_seconds() / ts_span
-                    tx = plot_left + ratio * plot_w
-                    time_svg += (
-                        f'<line x1="{tx:.1f}" y1="{plot_bottom}" x2="{tx:.1f}" y2="{plot_bottom + 3}" '
-                        f'stroke="#999" stroke-width="0.5" />'
-                    )
-                    time_svg += (
-                        f'<text x="{tx:.1f}" y="{height - 2}" font-size="6" fill="#999" '
-                        f'font-family="Arial,Helvetica,sans-serif" text-anchor="middle">'
-                        f'-{hours_ago}h</text>'
-                    )
+    if ts_span > 0:
+        for hours_ago in [2, 6, 12, 18]:
+            label_ts = ts_newest - timedelta(hours=hours_ago)
+            if label_ts >= ts_oldest:
+                ratio = (label_ts - ts_oldest).total_seconds() / ts_span
+                tx = plot_left + ratio * plot_w
+                time_svg += (
+                    f'<line x1="{tx:.1f}" y1="{plot_bottom}" x2="{tx:.1f}" y2="{plot_bottom + 3}" '
+                    f'stroke="#999" stroke-width="0.5" />'
+                )
+                time_svg += (
+                    f'<text x="{tx:.1f}" y="{height - 2}" font-size="6" fill="#999" '
+                    f'font-family="Arial,Helvetica,sans-serif" text-anchor="middle">'
+                    f'-{hours_ago}h</text>'
+                )
 
     return (
         f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" '
         f'class="sparkline" title="{title}">'
+        f'{error_svg}'
         f'{ref_svg}'
         f'<polyline fill="none" stroke="{color}" stroke-width="1.5" points="{points}" />'
         f'{time_svg}'
@@ -155,6 +162,7 @@ def sparkline_svg(
 def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[str, dict[str, str]]:
     """Build sparkline SVGs for each model/metric from 24 h history."""
     model_history: dict[str, dict[str, list[tuple[datetime, float]]]] = {}
+    model_errors: dict[str, list[datetime]] = {}
     for entry in history:
         ts = datetime.fromisoformat(entry["timestamp"])
         for r in entry.get("results", []):
@@ -163,10 +171,14 @@ def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[s
                 continue
             if name not in model_history:
                 model_history[name] = {"ttft": [], "tps": []}
-            if r.get("ttft") is not None:
-                model_history[name]["ttft"].append((ts, r["ttft"]))
-            if r.get("tps") is not None:
-                model_history[name]["tps"].append((ts, r["tps"]))
+                model_errors[name] = []
+            if r.get("error"):
+                model_errors[name].append(ts)
+            else:
+                if r.get("ttft") is not None:
+                    model_history[name]["ttft"].append((ts, r["ttft"]))
+                if r.get("tps") is not None:
+                    model_history[name]["tps"].append((ts, r["tps"]))
 
     sparklines: dict[str, dict[str, str]] = {}
     for r in current_results:
@@ -179,10 +191,12 @@ def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[s
             data = model_history.get(name, {}).get(metric, [])
             vals = [v for _, v in data]
             timestamps = [t for t, _ in data]
+            error_timestamps = model_errors.get(name, [])
             if len(vals) >= 2:
                 sparklines[name][metric] = sparkline_svg(
                     vals,
                     timestamps=timestamps,
+                    error_timestamps=error_timestamps,
                     color=color,
                     scale="log",
                     refs=refs,
