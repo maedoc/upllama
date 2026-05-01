@@ -56,7 +56,7 @@ jobs:
       - name: Run ometer benchmark and export JSON
         run: |
           python -m ometer --json results.json --ttft --tps --runs 1 --parallel 3 \
-            --model glm-5.1:cloud kimi-k2.6:cloud deepseek-v4-flash:cloud minimax-m2.5:cloud gemma4:31b:cloud
+            --model glm-5.1:cloud kimi-k2.6:cloud deepseek-v4-flash:cloud minimax-m2.5:cloud gemma4:31b:cloud deepseek-v4-pro:cloud
 
       # ---- 8️⃣ Retrieve existing history from gh-pages ------------
       - name: Checkout gh-pages branch for history
