@@ -6,9 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": null,
-    "tps": null,
-    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
+    "ttft": 0.4505567360000029,
+    "tps": 100.72142155930678
   },
   {
     "model": "deepseek-v4-pro",
@@ -17,9 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": null,
-    "tps": null,
-    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
+    "ttft": 0.5630140289999943,
+    "tps": 62.93311990836473
   },
   {
     "model": "glm-5.1",
@@ -28,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 1.122903899999983,
-    "tps": 22.258786943403436
+    "ttft": 5.033875942999998,
+    "tps": 95.8407092623313
   },
   {
     "model": "gemma4:31b",
@@ -38,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.6298190790000149,
-    "tps": 45.87176783287082
+    "ttft": 0.3217476820000016,
+    "tps": 5.1761454029033445
   },
   {
     "model": "kimi-k2.6",
@@ -48,8 +46,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 0.6778049090000309,
-    "tps": 79.3781270811106
+    "ttft": 0.6846364670000042,
+    "tps": 87.9606085539983
   },
   {
     "model": "minimax-m2.5",
@@ -58,7 +56,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 15.857866506999983,
-    "tps": 7.8765047557793775
+    "ttft": 0.3037870540000043,
+    "tps": 85.38836406737185
   }
 ]
