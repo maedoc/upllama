@@ -6,9 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": null,
-    "tps": null,
-    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
+    "ttft": 0.6336766519999912,
+    "tps": 29.08739113249005
   },
   {
     "model": "deepseek-v4-pro",
@@ -17,8 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 6.720514032000011,
-    "tps": 24.07180973646313
+    "ttft": 0.46488795999999866,
+    "tps": 115.35534321324967
   },
   {
     "model": "glm-5.1",
@@ -27,18 +26,18 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 0.9848752229999889,
-    "tps": 19.794725702233862
+    "ttft": 2.822049607999986,
+    "tps": 34.94824859166216
   },
   {
     "model": "gemma4:31b",
-    "size": "31B",
-    "context": "0",
-    "quant": "",
-    "capabilities": "",
+    "size": "32B",
+    "context": "262144",
+    "quant": "BF16",
+    "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 15.74205735199999,
-    "tps": 17.481768749692634
+    "ttft": 32.11183461500002,
+    "tps": 5.377751151210992
   },
   {
     "model": "kimi-k2.6",
@@ -47,8 +46,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 0.8013956990000111,
-    "tps": 54.867145404247616
+    "ttft": 0.7909789360000445,
+    "tps": 53.092399005692066
   },
   {
     "model": "minimax-m2.5",
@@ -57,7 +56,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 0.687094409999986,
-    "tps": 58.587088386500945
+    "ttft": 0.3412479399999597,
+    "tps": 40.67923290454471
   }
 ]
