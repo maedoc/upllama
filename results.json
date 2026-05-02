@@ -6,8 +6,9 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 1.023692280000006,
-    "tps": 35.26729559452509
+    "ttft": null,
+    "tps": null,
+    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
   },
   {
     "model": "deepseek-v4-pro",
@@ -16,8 +17,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.523640658000005,
-    "tps": 60.00638865633025
+    "ttft": 6.720514032000011,
+    "tps": 24.07180973646313
   },
   {
     "model": "glm-5.1",
@@ -26,18 +27,18 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 1.7684068149999916,
-    "tps": 35.39510049289916
+    "ttft": 0.9848752229999889,
+    "tps": 19.794725702233862
   },
   {
     "model": "gemma4:31b",
-    "size": "32B",
-    "context": "262144",
-    "quant": "BF16",
-    "capabilities": "completion, thinking, tools, vision",
+    "size": "31B",
+    "context": "0",
+    "quant": "",
+    "capabilities": "",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.38512304199998937,
-    "tps": 30.9251104944911
+    "ttft": 15.74205735199999,
+    "tps": 17.481768749692634
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +47,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 0.708903463999988,
-    "tps": 77.91548802127294
+    "ttft": 0.8013956990000111,
+    "tps": 54.867145404247616
   },
   {
     "model": "minimax-m2.5",
@@ -56,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 0.3484792650000088,
-    "tps": 60.62053424551174
+    "ttft": 0.687094409999986,
+    "tps": 58.587088386500945
   }
 ]

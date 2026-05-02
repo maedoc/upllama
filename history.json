@@ -2611,5 +2611,71 @@
         "tps": 60.62053424551174
       }
     ]
+  },
+  {
+    "timestamp": "2026-05-02T10:47:59.066753+00:00",
+    "results": [
+      {
+        "model": "deepseek-v4-flash",
+        "size": "158B",
+        "context": "1048576",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-24T00:00:00Z",
+        "ttft": null,
+        "tps": null,
+        "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
+      },
+      {
+        "model": "deepseek-v4-pro",
+        "size": "158B",
+        "context": "1048576",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-24T00:00:00Z",
+        "ttft": 6.720514032000011,
+        "tps": 24.07180973646313
+      },
+      {
+        "model": "glm-5.1",
+        "size": "756B",
+        "context": "202752",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-07T08:00:00-08:00",
+        "ttft": 0.9848752229999889,
+        "tps": 19.794725702233862
+      },
+      {
+        "model": "gemma4:31b",
+        "size": "31B",
+        "context": "0",
+        "quant": "",
+        "capabilities": "",
+        "modified_at": "2026-04-02T09:00:00-08:00",
+        "ttft": 15.74205735199999,
+        "tps": 17.481768749692634
+      },
+      {
+        "model": "kimi-k2.6",
+        "size": "1T",
+        "context": "262144",
+        "quant": "INT4",
+        "capabilities": "completion, thinking, tools, vision",
+        "modified_at": "2026-03-31T00:00:00Z",
+        "ttft": 0.8013956990000111,
+        "tps": 54.867145404247616
+      },
+      {
+        "model": "minimax-m2.5",
+        "size": "230B",
+        "context": "204800",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-02-12T00:00:00Z",
+        "ttft": 0.687094409999986,
+        "tps": 58.587088386500945
+      }
+    ]
   }
 ]
