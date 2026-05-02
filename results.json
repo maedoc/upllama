@@ -1,23 +1,24 @@
 [
   {
-    "model": "deepseek-v4-pro",
-    "size": "158B",
-    "context": "1048576",
-    "quant": "FP8",
-    "capabilities": "completion, thinking, tools",
-    "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.5234812219999867,
-    "tps": 59.721083890289265
-  },
-  {
     "model": "deepseek-v4-flash",
     "size": "158B",
     "context": "1048576",
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.6451940139999692,
-    "tps": 14.98328924421655
+    "ttft": null,
+    "tps": null,
+    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
+  },
+  {
+    "model": "deepseek-v4-pro",
+    "size": "158B",
+    "context": "1048576",
+    "quant": "FP8",
+    "capabilities": "completion, thinking, tools",
+    "modified_at": "2026-04-24T00:00:00Z",
+    "ttft": 0.4161485280000079,
+    "tps": 7.35415306241261
   },
   {
     "model": "glm-5.1",
@@ -26,8 +27,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 0.6998444309999741,
-    "tps": 22.25135483772867
+    "ttft": 0.5600504479999984,
+    "tps": 54.12832785077681
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +37,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.29775396700000556,
-    "tps": 50.70415281422795
+    "ttft": 47.40089324799999,
+    "tps": 6.426047929527838
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +47,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 0.8075787760000139,
-    "tps": 60.67808647484497
+    "ttft": 0.9865561100000093,
+    "tps": 48.81063316931708
   },
   {
     "model": "minimax-m2.5",
@@ -56,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 0.3084683939999877,
-    "tps": 88.45017238405462
+    "ttft": 0.39965224599995963,
+    "tps": 49.23327114498029
   }
 ]
