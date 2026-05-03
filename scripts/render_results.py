@@ -292,6 +292,20 @@ def render(results: list[dict], history: list[dict]) -> None:
     (SITE_DIR / "results.json").write_text(json.dumps(results, indent=2))
     # Write rolling history JSON so next runs can accumulate
     (SITE_DIR / "history.json").write_text(json.dumps(history, indent=2))
+    # Favicon – smile-sweat llama emoji in black & white
+    (SITE_DIR / "favicon.svg").write_text(FAVICON_SVG, encoding="utf-8")
+
+
+FAVICON_SVG = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <path d="M10 11 L8 4 L13 10 Z" fill="#111"/>
+  <path d="M22 11 L24 4 L19 10 Z" fill="#111"/>
+  <path d="M16 28 C9 28 7 24 7 20 C7 16 9 13 12 12 C14 11 15 11 16 11 C17 11 18 11 20 12 C23 13 25 16 25 20 C25 24 23 28 16 28 Z" fill="#111"/>
+  <circle cx="12" cy="17" r="1.5" fill="#fff"/>
+  <circle cx="20" cy="17" r="1.5" fill="#fff"/>
+  <path d="M11 22 Q16 25 21 22" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M24 5 C26.5 3 27.5 6 27.5 8 C27.5 10.5 25.5 11 24 11 C22.5 11 20.5 10.5 20.5 8 C20.5 6 21.5 3 24 5 Z" fill="#111"/>
+</svg>
+'''
 
 
 def main() -> None:
