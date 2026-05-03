@@ -228,6 +228,33 @@ def update_history(history_path: pathlib.Path | None, results: list[dict]) -> li
     return history
 
 
+def compute_means(history: list[dict]) -> dict[str, dict[str, float | None]]:
+    """Compute geometric mean of non-error values per model/metric."""
+    model_vals: dict[str, dict[str, list[float]]] = {}
+    for entry in history:
+        for r in entry.get("results", []):
+            name = r.get("model")
+            if not name or r.get("error"):
+                continue
+            if name not in model_vals:
+                model_vals[name] = {"ttft": [], "tps": []}
+            if r.get("ttft") is not None:
+                model_vals[name]["ttft"].append(r["ttft"])
+            if r.get("tps") is not None:
+                model_vals[name]["tps"].append(r["tps"])
+
+    means: dict[str, dict[str, float | None]] = {}
+    for name, metrics in model_vals.items():
+        means[name] = {}
+        for metric in ("ttft", "tps"):
+            vals = metrics.get(metric, [])
+            if vals and all(v > 0 for v in vals):
+                means[name][metric] = math.exp(sum(math.log(v) for v in vals) / len(vals))
+            else:
+                means[name][metric] = None
+    return means
+
+
 def render(results: list[dict], history: list[dict]) -> None:
     """Render index.html using a Jinja2 template."""
     env = Environment(
@@ -247,12 +274,14 @@ def render(results: list[dict], history: list[dict]) -> None:
     }
 
     sparklines = build_sparklines(history, results)
+    means = compute_means(history)
 
     rendered = tmpl.render(
         results=results,
         generated_at=now,
         github=github_ctx,
         sparklines=sparklines,
+        means=means,
     )
 
     SITE_DIR.mkdir(parents=True, exist_ok=True)

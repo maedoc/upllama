@@ -11,6 +11,7 @@
     .error {color:#c00;}
     .sparkline { display:block; margin-top:4px; }
     .metric { font-variant-numeric: tabular-nums; }
+    .mean { color: #888; font-size: 0.85em; }
   </style>
 </head>
 <body>
@@ -37,11 +38,17 @@
         <td>{{ row.context }}</td>
         <td>{{ row.quant }}</td>
         <td class="metric">
-          {{ "%.2f"|format(row.ttft) if row.ttft is not none else "n/a" }}
+          {% if row.ttft is not none %}{{ "%.2f"|format(row.ttft) }}{% else %}n/a{% endif %}
+          {% if means.get(row.model, {}).get('ttft') is not none %}
+            <span class="mean">({{ "%.2f"|format(means[row.model]['ttft']) }})</span>
+          {% endif %}
           {{ sparklines[row.model].ttft | safe }}
         </td>
         <td class="metric">
-          {{ "%.2f"|format(row.tps) if row.tps is not none else "n/a" }}
+          {% if row.tps is not none %}{{ "%.2f"|format(row.tps) }}{% else %}n/a{% endif %}
+          {% if means.get(row.model, {}).get('tps') is not none %}
+            <span class="mean">({{ "%.2f"|format(means[row.model]['tps']) }})</span>
+          {% endif %}
           {{ sparklines[row.model].tps | safe }}
         </td>
         <td class="{% if row.error %}error{% endif %}">{{ row.error | default("—") }}</td>
