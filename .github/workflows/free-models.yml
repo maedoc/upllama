@@ -1,0 +1,76 @@
+name: Free Model Availability → GitHub Pages
+
+on:
+  schedule:
+    - cron: "0 4 * * *"           # daily at 04:00 UTC
+  workflow_dispatch:              # on-demand
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+permissions:
+  contents: write      # needed to push to gh-pages branch
+  pages: write         # push to gh-pages
+  id-token: write      # needed by the gh-pages action
+
+jobs:
+  probe-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install httpx
+
+      - name: Probe free-tier models
+        env:
+          UPLLAMA_FREE_KEY: ${{ secrets.UPLLAMA_FREE_KEY }}
+        run: |
+          python scripts/test_free_models.py --output free_models.json
+
+      - name: Checkout gh-pages for existing files
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: _gh_pages
+        continue-on-error: true
+
+      - name: Prepare publish directory
+        run: |
+          mkdir -p site
+          if [ -f _gh_pages/index.html ]; then
+            cp _gh_pages/index.html site/
+          fi
+          if [ -f _gh_pages/history.json ]; then
+            cp _gh_pages/history.json site/
+          fi
+          if [ -f _gh_pages/results.json ]; then
+            cp _gh_pages/results.json site/
+          fi
+          if [ -f _gh_pages/favicon.svg ]; then
+            cp _gh_pages/favicon.svg site/
+          fi
+          cp free_models.json site/
+
+      - name: Deploy site to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: site
+          publish_branch: gh-pages
+          commit_message: "🔓 Update free model availability"
+          force_orphan: false
+          keep_files: true
