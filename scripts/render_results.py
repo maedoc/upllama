@@ -84,14 +84,25 @@ def sparkline_svg(
     def y_for(val_t: float) -> float:
         return plot_bottom - ((val_t - ymin) / rng) * plot_h
 
-    # Compute time span from all timestamps (data + errors)
+    # Compute x positions – log scale backward in time (spread recent, compress old)
     all_timestamps: list[datetime] = list(timestamps or []) + list(error_timestamps or [])
     ts_oldest = min(all_timestamps) if all_timestamps else None
     ts_newest = max(all_timestamps) if all_timestamps else None
     ts_span = (ts_newest - ts_oldest).total_seconds() if ts_oldest and ts_newest else 0
 
+    def _x_from_age(age: float) -> float:
+        """Map age in seconds to an x coordinate using log scale."""
+        eps = 60.0  # 1 minute
+        log_eps = math.log(eps)
+        log_max = math.log(ts_span + eps)
+        # Guard against degenerate scale
+        if log_max <= log_eps:
+            return plot_left + (1 - age / ts_span) * plot_w
+        ratio = (math.log(age + eps) - log_eps) / (log_max - log_eps)
+        return plot_right - ratio * plot_w
+
     if timestamps and len(timestamps) == len(values) and ts_span > 0:
-        xs = [plot_left + ((ts - ts_oldest).total_seconds() / ts_span) * plot_w for ts in timestamps]
+        xs = [_x_from_age((ts_newest - ts).total_seconds()) for ts in timestamps]
     else:
         step = plot_w / (len(values) - 1)
         xs = [plot_left + i * step for i in range(len(values))]
@@ -103,14 +114,13 @@ def sparkline_svg(
     error_svg = ""
     if error_timestamps and ts_span > 0:
         for ets in error_timestamps:
-            ratio = (ets - ts_oldest).total_seconds() / ts_span
-            ex = plot_left + ratio * plot_w
+            ex = _x_from_age((ts_newest - ets).total_seconds())
             error_svg += (
                 f'<line x1="{ex:.1f}" y1="{plot_top}" x2="{ex:.1f}" y2="{plot_bottom}" '
                 f'stroke="#ef4444" stroke-width="1.5" opacity="0.7" />'
             )
 
-    # Reference lines & labels
+    # Reference lines & labels (y-axis, unaffected)
     ref_svg = ""
     if refs:
         for ref in refs:
@@ -130,14 +140,13 @@ def sparkline_svg(
                 f'font-family="Arial,Helvetica,sans-serif" dominant-baseline="middle">{label}</text>'
             )
 
-    # Time labels at the bottom
+    # Time labels at the bottom – log scale: -1h, -6h, -2d
     time_svg = ""
     if ts_span > 0:
-        for hours_ago in [2, 6, 12, 18]:
-            label_ts = ts_newest - timedelta(hours=hours_ago)
-            if label_ts >= ts_oldest:
-                ratio = (label_ts - ts_oldest).total_seconds() / ts_span
-                tx = plot_left + ratio * plot_w
+        for label_text, hours_ago in (("-1h", 1), ("-6h", 6), ("-2d", 48)):
+            label_age = hours_ago * 3600
+            if label_age <= ts_span:
+                tx = _x_from_age(label_age)
                 time_svg += (
                     f'<line x1="{tx:.1f}" y1="{plot_bottom}" x2="{tx:.1f}" y2="{plot_bottom + 3}" '
                     f'stroke="#999" stroke-width="0.5" />'
@@ -145,7 +154,7 @@ def sparkline_svg(
                 time_svg += (
                     f'<text x="{tx:.1f}" y="{height - 2}" font-size="6" fill="#999" '
                     f'font-family="Arial,Helvetica,sans-serif" text-anchor="middle">'
-                    f'-{hours_ago}h</text>'
+                    f'{label_text}</text>'
                 )
 
     return (
@@ -160,7 +169,7 @@ def sparkline_svg(
 
 
 def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[str, dict[str, str]]:
-    """Build sparkline SVGs for each model/metric from 24 h history."""
+    """Build sparkline SVGs for each model/metric from 72 h history."""
     model_history: dict[str, dict[str, list[tuple[datetime, float]]]] = {}
     model_errors: dict[str, list[datetime]] = {}
     for entry in history:
@@ -220,7 +229,7 @@ def update_history(history_path: pathlib.Path | None, results: list[dict]) -> li
         "results": results,
     })
 
-    cutoff = now - timedelta(hours=24)
+    cutoff = now - timedelta(hours=72)
     history = [
         h for h in history
         if datetime.fromisoformat(h["timestamp"]) >= cutoff
