@@ -1,23 +1,23 @@
 [
   {
-    "model": "deepseek-v4-flash",
-    "size": "158B",
-    "context": "1048576",
-    "quant": "FP8",
-    "capabilities": "completion, thinking, tools",
-    "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.8919048000000203,
-    "tps": 35.77915751450821
-  },
-  {
     "model": "deepseek-v4-pro",
     "size": "158B",
     "context": "1048576",
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.48392427999999654,
-    "tps": 66.16151136685373
+    "ttft": 3.2543560620000562,
+    "tps": 54.9990414979679
+  },
+  {
+    "model": "deepseek-v4-flash",
+    "size": "158B",
+    "context": "1048576",
+    "quant": "FP8",
+    "capabilities": "completion, thinking, tools",
+    "modified_at": "2026-04-24T00:00:00Z",
+    "ttft": 0.5622993059999999,
+    "tps": 49.68356694333712
   },
   {
     "model": "glm-5.1",
@@ -26,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 4.711298002999968,
-    "tps": 35.778699750050784
+    "ttft": 0.87893624000003,
+    "tps": 31.45669187487754
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.36460929200001146,
-    "tps": 44.376867828656145
+    "ttft": 5.481456691000062,
+    "tps": 9.762721351103513
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +46,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 0.644127444999981,
-    "tps": 76.50205178625714
+    "ttft": 1.8497378850000814,
+    "tps": 26.249502334432954
   },
   {
     "model": "minimax-m2.5",
@@ -56,7 +56,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 0.4456346489999987,
-    "tps": 60.93700381262064
+    "ttft": 52.29178954600002,
+    "tps": 5.159048952257874
   }
 ]
