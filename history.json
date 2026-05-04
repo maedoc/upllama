@@ -1,135 +1,5 @@
 [
   {
-    "timestamp": "2026-05-03T13:30:05.343496+00:00",
-    "results": [
-      {
-        "model": "deepseek-v4-pro",
-        "size": "158B",
-        "context": "1048576",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-24T00:00:00Z",
-        "ttft": 4.645951025000016,
-        "tps": 33.35171931011632
-      },
-      {
-        "model": "deepseek-v4-flash",
-        "size": "158B",
-        "context": "1048576",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-24T00:00:00Z",
-        "ttft": 1.3380859739999948,
-        "tps": 61.82788371410392
-      },
-      {
-        "model": "glm-5.1",
-        "size": "756B",
-        "context": "202752",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-07T08:00:00-08:00",
-        "ttft": 2.210378861999999,
-        "tps": 17.433155467232382
-      },
-      {
-        "model": "gemma4:31b",
-        "size": "32B",
-        "context": "262144",
-        "quant": "BF16",
-        "capabilities": "completion, thinking, tools, vision",
-        "modified_at": "2026-04-02T09:00:00-08:00",
-        "ttft": 5.655413789999983,
-        "tps": 20.01241293443337
-      },
-      {
-        "model": "kimi-k2.6",
-        "size": "1T",
-        "context": "262144",
-        "quant": "INT4",
-        "capabilities": "completion, thinking, tools, vision",
-        "modified_at": "2026-03-31T00:00:00Z",
-        "ttft": 4.194715396999982,
-        "tps": 48.09150206755187
-      },
-      {
-        "model": "minimax-m2.5",
-        "size": "230B",
-        "context": "204800",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-02-12T00:00:00Z",
-        "ttft": 0.3802035189999913,
-        "tps": 63.75842546267039
-      }
-    ]
-  },
-  {
-    "timestamp": "2026-05-03T14:00:14.417213+00:00",
-    "results": [
-      {
-        "model": "deepseek-v4-flash",
-        "size": "158B",
-        "context": "1048576",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-24T00:00:00Z",
-        "ttft": 0.5645600590000015,
-        "tps": 103.38739088153524
-      },
-      {
-        "model": "deepseek-v4-pro",
-        "size": "158B",
-        "context": "1048576",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-24T00:00:00Z",
-        "ttft": 6.666644277000003,
-        "tps": 52.82913813573399
-      },
-      {
-        "model": "glm-5.1",
-        "size": "756B",
-        "context": "202752",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-07T08:00:00-08:00",
-        "ttft": 3.046287932999995,
-        "tps": 19.09414608002135
-      },
-      {
-        "model": "gemma4:31b",
-        "size": "32B",
-        "context": "262144",
-        "quant": "BF16",
-        "capabilities": "completion, thinking, tools, vision",
-        "modified_at": "2026-04-02T09:00:00-08:00",
-        "ttft": 0.28078637200000145,
-        "tps": 54.16513724010776
-      },
-      {
-        "model": "kimi-k2.6",
-        "size": "1T",
-        "context": "262144",
-        "quant": "INT4",
-        "capabilities": "completion, thinking, tools, vision",
-        "modified_at": "2026-03-31T00:00:00Z",
-        "ttft": 0.7796691570000007,
-        "tps": 66.31737590403925
-      },
-      {
-        "model": "minimax-m2.5",
-        "size": "230B",
-        "context": "204800",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-02-12T00:00:00Z",
-        "ttft": 0.42121220599999276,
-        "tps": 62.464900914247764
-      }
-    ]
-  },
-  {
     "timestamp": "2026-05-03T14:26:38.687609+00:00",
     "results": [
       {
@@ -2471,6 +2341,72 @@
         "modified_at": "2026-02-12T00:00:00Z",
         "ttft": 37.350623535999944,
         "tps": 6.786129277751106
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-04T14:16:52.138321+00:00",
+    "results": [
+      {
+        "model": "deepseek-v4-flash",
+        "size": "158B",
+        "context": "1048576",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-24T00:00:00Z",
+        "ttft": 1.0558394429999964,
+        "tps": 20.46702705549548
+      },
+      {
+        "model": "deepseek-v4-pro",
+        "size": "158B",
+        "context": "1048576",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-24T00:00:00Z",
+        "ttft": null,
+        "tps": null,
+        "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
+      },
+      {
+        "model": "glm-5.1",
+        "size": "756B",
+        "context": "202752",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-07T08:00:00-08:00",
+        "ttft": 42.381046372,
+        "tps": 17.61629839668661
+      },
+      {
+        "model": "gemma4:31b",
+        "size": "32B",
+        "context": "262144",
+        "quant": "BF16",
+        "capabilities": "completion, thinking, tools, vision",
+        "modified_at": "2026-04-02T09:00:00-08:00",
+        "ttft": 34.186248601,
+        "tps": 3.9922740301846322
+      },
+      {
+        "model": "kimi-k2.6",
+        "size": "1T",
+        "context": "262144",
+        "quant": "INT4",
+        "capabilities": "completion, thinking, tools, vision",
+        "modified_at": "2026-03-31T00:00:00Z",
+        "ttft": 4.8958898950000105,
+        "tps": 50.9662913744055
+      },
+      {
+        "model": "minimax-m2.5",
+        "size": "230B",
+        "context": "204800",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-02-12T00:00:00Z",
+        "ttft": 2.901733624000002,
+        "tps": 34.281380335665446
       }
     ]
   }
