@@ -58,7 +58,14 @@ jobs:
           python -m ometer --json results.json --ttft --tps --runs 1 --parallel 3 \
             --model glm-5.1:cloud kimi-k2.6:cloud deepseek-v4-flash:cloud minimax-m2.5:cloud gemma4:31b:cloud deepseek-v4-pro:cloud
 
-      # ---- 8️⃣ Retrieve existing history from gh-pages ------------
+      # ---- 8️⃣ Test free-account model availability ----------
+      - name: Probe free-tier model availability
+        env:
+          UPLLAMA_FREE_KEY: ${{ secrets.UPLLAMA_FREE_KEY }}
+        run: |
+          python scripts/test_free_models.py --output free_models.json
+
+      # ---- 9️⃣ Retrieve existing history from gh-pages ------------
       - name: Checkout gh-pages branch for history
         uses: actions/checkout@v4
         with:
@@ -66,16 +73,18 @@ jobs:
           path: _gh_pages
         continue-on-error: true
 
-      # ---- 9️⃣ Render static site from JSON --------------------
+      # ---- 10️⃣ Render static site from JSON --------------------
       - name: Render HTML site from JSON
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_RUN_ID: ${{ github.run_id }}
           GITHUB_RUN_NUMBER: ${{ github.run_number }}
         run: |
-          python scripts/render_results.py --history _gh_pages/history.json
+          python scripts/render_results.py \
+            --history _gh_pages/history.json \
+            --free-models free_models.json
 
-      # ---- 9️⃣ (Optional) Keep raw JSON as an artifact for debugging
+      # ---- 11️⃣ (Optional) Keep raw JSON as an artifact for debugging
       - name: Upload raw JSON artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -84,7 +93,7 @@ jobs:
           path: results.json
           retention-days: 7
 
-      # ---- 10️⃣ Deploy to GitHub Pages ---------------
+      # ---- 12️⃣ Deploy to GitHub Pages ---------------
       - name: Deploy site to gh‑pages
         uses: peaceiris/actions-gh-pages@v3
         with:

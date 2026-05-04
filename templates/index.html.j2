@@ -13,6 +13,10 @@
     .sparkline { display:block; margin-top:4px; }
     .metric { font-variant-numeric: tabular-nums; }
     .mean { color: #888; font-size: 0.85em; }
+    .model-chips { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.5rem; }
+    .chip { padding:0.15rem 0.4rem; border-radius:4px; font-size:0.82rem; background:#eee; white-space:nowrap; }
+    .chip.ok { background:#d1fae5; color:#065f46; }
+    .chip.nok { background:#fee2e2; color:#991b1b; text-decoration:line-through; }
   </style>
 </head>
 <body>
@@ -65,5 +69,16 @@
       (<a href="https://github.com/{{ github.repository }}/actions/runs/{{ github.run_id }}">GitHub run {{ github.run_number }}</a>)
     </small>
   </p>
+
+  {% if free_models %}
+  <hr>
+  <h2>Free Account Model Availability</h2>
+  <p>Tested {{ free_models.tested_at }} — {{ free_models.count_available }} / {{ free_models.count_total }} available</p>
+  <div class="model-chips">
+    {% for m in free_models.results %}
+    <span class="chip {% if m.available %}ok{% else %}nok{% endif %}" title="{% if not m.available %}{{ m.error }}{% endif %}">{{ m.model }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
 </body>
 </html>

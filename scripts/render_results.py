@@ -255,7 +255,7 @@ def compute_means(history: list[dict]) -> dict[str, dict[str, float | None]]:
     return means
 
 
-def render(results: list[dict], history: list[dict]) -> None:
+def render(results: list[dict], history: list[dict], free_models: dict | None = None) -> None:
     """Render index.html using a Jinja2 template."""
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATE_DIR)),
@@ -282,6 +282,7 @@ def render(results: list[dict], history: list[dict]) -> None:
         github=github_ctx,
         sparklines=sparklines,
         means=means,
+        free_models=free_models,
     )
 
     SITE_DIR.mkdir(parents=True, exist_ok=True)
@@ -311,11 +312,18 @@ FAVICON_SVG = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--history", type=pathlib.Path, default=None, help="Path to existing history.json")
+    parser.add_argument("--free-models", type=pathlib.Path, default=None, help="Path to free_models.json")
     args = parser.parse_args()
 
     results = load_results()
     history = update_history(args.history, results)
-    render(results, history)
+
+    free_models: dict | None = None
+    if args.free_models and args.free_models.is_file():
+        with args.free_models.open(encoding="utf-8") as f:
+            free_models = json.load(f)
+
+    render(results, history, free_models)
     print(f"[info] static site generated in {SITE_DIR}")
 
 if __name__ == "__main__":
