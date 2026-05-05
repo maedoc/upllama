@@ -160,8 +160,36 @@ def sparkline_svg(
     )
 
 
-def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[str, dict[str, str]]:
-    """Build sparkline SVGs for each model/metric from 72 h history."""
+STANDALONE_HTML_TMPL = """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{model} – {metric}</title>
+  <style>
+    body {{ font-family: Helvetica, Arial, sans-serif; margin: 2rem; background: #fff; }}
+    h1 {{ font-size: 1.2rem; margin-bottom: 0.5rem; }}
+    .back {{ margin-bottom: 1rem; font-size: 0.9rem; }}
+    .chart {{ max-width: 1000px; }}
+    .chart svg {{ width: 100%; height: auto; display: block; }}
+  </style>
+</head>
+<body>
+  <a class="back" href="../index.html">← Back to dashboard</a>
+  <h1>{model} – {metric}</h1>
+  <div class="chart">
+    {svg}
+  </div>
+</body>
+</html>
+"""
+
+
+def build_sparklines(
+    history: list[dict],
+    current_results: list[dict],
+    out_dir: pathlib.Path | None = None,
+) -> dict[str, dict[str, dict[str, str]]]:
+    """Build sparkline SVGs for each model/metric from 48 h history and optional standalone pages."""
     model_history: dict[str, dict[str, list[tuple[datetime, float]]]] = {}
     model_errors: dict[str, list[datetime]] = {}
     for entry in history:
@@ -181,7 +209,7 @@ def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[s
                 if r.get("tps") is not None:
                     model_history[name]["tps"].append((ts, r["tps"]))
 
-    sparklines: dict[str, dict[str, str]] = {}
+    sparklines: dict[str, dict[str, dict[str, str]]] = {}
     for r in current_results:
         name = r.get("model")
         sparklines[name] = {}
@@ -194,7 +222,7 @@ def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[s
             timestamps = [t for t, _ in data]
             error_timestamps = model_errors.get(name, [])
             if len(vals) >= 2:
-                sparklines[name][metric] = sparkline_svg(
+                inline_svg = sparkline_svg(
                     vals,
                     timestamps=timestamps,
                     error_timestamps=error_timestamps,
@@ -203,13 +231,28 @@ def build_sparklines(history: list[dict], current_results: list[dict]) -> dict[s
                     refs=refs,
                     unit=unit,
                 )
+                href = ""
+                if out_dir is not None:
+                    safe_name = name.replace("/", "_").replace(":", "_")
+                    filename = f"{safe_name}_{metric}.html"
+                    filepath = out_dir / filename
+                    filepath.write_text(
+                        STANDALONE_HTML_TMPL.format(
+                            model=name,
+                            metric=metric.upper(),
+                            svg=inline_svg,
+                        ),
+                        encoding="utf-8",
+                    )
+                    href = f"sparklines/{filename}"
+                sparklines[name][metric] = {"svg": inline_svg, "href": href}
             else:
-                sparklines[name][metric] = ""
+                sparklines[name][metric] = {"svg": "", "href": ""}
     return sparklines
 
 
 def update_history(history_path: pathlib.Path | None, results: list[dict]) -> list[dict]:
-    """Load existing history, append current run, trim to last 24 h."""
+    """Load existing history, append current run, trim to last 48 h."""
     history: list[dict] = []
     if history_path and history_path.is_file():
         with history_path.open(encoding="utf-8") as f:
@@ -274,7 +317,9 @@ def render(results: list[dict], history: list[dict], free_models: dict | None = 
         "run_number": os.getenv("GITHUB_RUN_NUMBER", ""),
     }
 
-    sparklines = build_sparklines(history, results)
+    sparklines_dir = SITE_DIR / "sparklines"
+    sparklines_dir.mkdir(parents=True, exist_ok=True)
+    sparklines = build_sparklines(history, results, sparklines_dir)
     means = compute_means(history)
 
     rendered = tmpl.render(
