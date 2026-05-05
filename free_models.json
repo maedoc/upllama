@@ -1,30 +1,30 @@
 {
-  "tested_at": "2026-05-05 05:00 UTC",
+  "tested_at": "2026-05-05 13:17 UTC",
   "count_total": 39,
-  "count_available": 4,
+  "count_available": 24,
   "results": [
     {
       "model": "cogito-2.1:671b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 371.9
     },
     {
       "model": "deepseek-v3.1:671b",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "Client error '403 Forbidden' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
       "ttft_ms": null
     },
     {
       "model": "deepseek-v3.2",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "Client error '403 Forbidden' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
       "ttft_ms": null
     },
     {
       "model": "deepseek-v4-flash",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "Client error '403 Forbidden' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
       "ttft_ms": null
     },
     {
@@ -37,55 +37,55 @@
       "model": "devstral-2:123b",
       "available": true,
       "error": null,
-      "ttft_ms": 584.6
+      "ttft_ms": 518.2
     },
     {
       "model": "devstral-small-2:24b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 625.1
     },
     {
       "model": "gemini-3-flash-preview",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "Client error '403 Forbidden' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
       "ttft_ms": null
     },
     {
       "model": "gemma3:12b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 364.5
     },
     {
       "model": "gemma3:27b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 354.9
     },
     {
       "model": "gemma3:4b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 339.8
     },
     {
       "model": "gemma4:31b",
       "available": true,
       "error": null,
-      "ttft_ms": 769.2
+      "ttft_ms": 302.7
     },
     {
       "model": "glm-4.6",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 821.7
     },
     {
       "model": "glm-4.7",
       "available": true,
       "error": null,
-      "ttft_ms": 4883.1
+      "ttft_ms": 22259.6
     },
     {
       "model": "glm-5",
@@ -96,31 +96,31 @@
     {
       "model": "glm-5.1",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "Client error '403 Forbidden' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
       "ttft_ms": null
     },
     {
       "model": "gpt-oss:120b",
       "available": true,
       "error": null,
-      "ttft_ms": 2562.7
+      "ttft_ms": 520.9
     },
     {
       "model": "gpt-oss:20b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 539.8
     },
     {
       "model": "kimi-k2-thinking",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "Client error '403 Forbidden' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
       "ttft_ms": null
     },
     {
       "model": "kimi-k2.5",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "Client error '403 Forbidden' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
       "ttft_ms": null
     },
     {
@@ -137,105 +137,105 @@
     },
     {
       "model": "minimax-m2",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 892.1
     },
     {
       "model": "minimax-m2.1",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 653.8
     },
     {
       "model": "minimax-m2.5",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 22105.2
     },
     {
       "model": "minimax-m2.7",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "Client error '403 Forbidden' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
       "ttft_ms": null
     },
     {
       "model": "ministral-3:14b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 425.2
     },
     {
       "model": "ministral-3:3b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 369.0
     },
     {
       "model": "ministral-3:8b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 389.0
     },
     {
       "model": "mistral-large-3:675b",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "Client error '403 Forbidden' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
       "ttft_ms": null
     },
     {
       "model": "nemotron-3-nano:30b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 500.7
     },
     {
       "model": "nemotron-3-super",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 741.0
     },
     {
       "model": "qwen3-coder-next",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 2192.1
     },
     {
       "model": "qwen3-coder:480b",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "",
       "ttft_ms": null
     },
     {
       "model": "qwen3-next:80b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 3067.8
     },
     {
       "model": "qwen3-vl:235b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 4115.0
     },
     {
       "model": "qwen3-vl:235b-instruct",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 629.1
     },
     {
       "model": "qwen3.5:397b",
       "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
+      "error": "Client error '403 Forbidden' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403",
       "ttft_ms": null
     },
     {
       "model": "rnj-1:8b",
-      "available": false,
-      "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 305.6
     }
   ]
 }
