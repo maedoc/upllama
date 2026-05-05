@@ -1,33 +1,33 @@
 [
   {
-    "model": "deepseek-v4-flash",
-    "size": "158B",
-    "context": "1048576",
-    "quant": "FP8",
-    "capabilities": "completion, thinking, tools",
-    "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 16.07708737,
-    "tps": 59.97775668874722
-  },
-  {
     "model": "deepseek-v4-pro",
     "size": "158B",
     "context": "1048576",
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 9.659988864999988,
-    "tps": 113.6857966995919
+    "ttft": 0.5038005039999973,
+    "tps": 7.481900578679527
+  },
+  {
+    "model": "deepseek-v4-flash",
+    "size": "158B",
+    "context": "1048576",
+    "quant": "FP8",
+    "capabilities": "completion, thinking, tools",
+    "modified_at": "2026-04-24T00:00:00Z",
+    "ttft": 0.6121395589999992,
+    "tps": 43.063715593276584
   },
   {
     "model": "glm-5.1",
-    "size": "0B",
-    "context": "0",
-    "quant": "",
-    "capabilities": "",
+    "size": "756B",
+    "context": "202752",
+    "quant": "FP8",
+    "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 66.192268389,
-    "tps": 18.270917312389454
+    "ttft": 8.556091867999996,
+    "tps": 27.093841816939445
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 7.585012837999997,
-    "tps": 34.458589540427866
+    "ttft": 0.4380020239999993,
+    "tps": 32.16054689541811
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +46,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 7.049302205999993,
-    "tps": 22.87685631440658
+    "ttft": 0.7589636539999987,
+    "tps": 21.96445017947201
   },
   {
     "model": "minimax-m2.5",
@@ -56,7 +56,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 11.019869531000012,
-    "tps": 53.71468195955732
+    "ttft": 0.35750823699999046,
+    "tps": 76.331237704576
   }
 ]
