@@ -89,8 +89,9 @@ async def main(output: pathlib.Path) -> None:
         models = await list_models(client)
         models.sort(key=lambda m: m.get("name", "").lower())
         print(f"[info] Probing {len(models)} model(s)…")
-        tasks = [probe_model(client, m["name"]) for m in models]
-        results = await asyncio.gather(*tasks)
+        results = []
+        for m in models:
+            results.append(await probe_model(client, m["name"]))
 
     out = {
         "tested_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
