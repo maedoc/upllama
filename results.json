@@ -6,8 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 8.054254968999999,
-    "tps": 19.83213953224793
+    "ttft": 1.0759302100000028,
+    "tps": 10.915960198473798
   },
   {
     "model": "deepseek-v4-pro",
@@ -16,8 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 115.884781475,
-    "tps": 2.7749182300062927
+    "ttft": 29.85125559600001,
+    "tps": 9.538843534355331
   },
   {
     "model": "glm-5.1",
@@ -26,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 2.7428889029999937,
-    "tps": 13.797618255617888
+    "ttft": 1.5220174069999999,
+    "tps": 38.92377948920906
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 9.688451216999994,
-    "tps": 3.8735252730937075
+    "ttft": 83.60754584500002,
+    "tps": 2.430410990714563
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +46,9 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 1.2094750890000228,
-    "tps": 30.47848256494623
+    "ttft": null,
+    "tps": null,
+    "error": "peer closed connection without sending complete message body (incomplete chunked read)"
   },
   {
     "model": "minimax-m2.5",
@@ -56,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 3.0006906200000003,
-    "tps": 69.03772097988521
+    "ttft": 8.027944991999988,
+    "tps": 40.13851062409908
   }
 ]
