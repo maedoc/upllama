@@ -1,5 +1,15 @@
 [
   {
+    "model": "deepseek-v4-pro",
+    "size": "1T",
+    "context": "1048576",
+    "quant": "FP8",
+    "capabilities": "completion, thinking, tools",
+    "modified_at": "2026-04-24T00:00:00Z",
+    "ttft": 0.5248387319999992,
+    "tps": 29.565971559176017
+  },
+  {
     "model": "deepseek-v4-flash",
     "size": "158B",
     "context": "1048576",
@@ -11,24 +21,14 @@
     "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
   },
   {
-    "model": "deepseek-v4-pro",
-    "size": "1T",
-    "context": "1048576",
-    "quant": "FP8",
-    "capabilities": "completion, thinking, tools",
-    "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 7.8988097079999875,
-    "tps": 28.703846040847225
-  },
-  {
     "model": "glm-5.1",
     "size": "756B",
     "context": "202752",
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 1.951481976000025,
-    "tps": 14.654673993412452
+    "ttft": 30.428998713999995,
+    "tps": 22.116445070798935
   },
   {
     "model": "gemma4:31b",
@@ -37,8 +37,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.4489706310000088,
-    "tps": 52.79018757552029
+    "ttft": 9.573547974999997,
+    "tps": 21.83637781291073
   },
   {
     "model": "kimi-k2.6",
@@ -47,8 +47,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 2.4336503449999896,
-    "tps": 70.28558055797097
+    "ttft": 0.6817189679999984,
+    "tps": 42.08281438777905
   },
   {
     "model": "minimax-m2.5",
@@ -57,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 3.3175853319999646,
-    "tps": 28.709136338129973
+    "ttft": 0.33186167700000624,
+    "tps": 84.72801274628917
   }
 ]
