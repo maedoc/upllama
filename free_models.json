@@ -1,13 +1,13 @@
 {
-  "tested_at": "2026-05-05 13:17 UTC",
+  "tested_at": "2026-05-06 05:03 UTC",
   "count_total": 39,
-  "count_available": 24,
+  "count_available": 25,
   "results": [
     {
       "model": "cogito-2.1:671b",
       "available": true,
       "error": null,
-      "ttft_ms": 371.9
+      "ttft_ms": 374.9
     },
     {
       "model": "deepseek-v3.1:671b",
@@ -37,13 +37,13 @@
       "model": "devstral-2:123b",
       "available": true,
       "error": null,
-      "ttft_ms": 518.2
+      "ttft_ms": 659.7
     },
     {
       "model": "devstral-small-2:24b",
       "available": true,
       "error": null,
-      "ttft_ms": 625.1
+      "ttft_ms": 560.1
     },
     {
       "model": "gemini-3-flash-preview",
@@ -55,37 +55,37 @@
       "model": "gemma3:12b",
       "available": true,
       "error": null,
-      "ttft_ms": 364.5
+      "ttft_ms": 378.6
     },
     {
       "model": "gemma3:27b",
       "available": true,
       "error": null,
-      "ttft_ms": 354.9
+      "ttft_ms": 568.5
     },
     {
       "model": "gemma3:4b",
       "available": true,
       "error": null,
-      "ttft_ms": 339.8
+      "ttft_ms": 396.6
     },
     {
       "model": "gemma4:31b",
       "available": true,
       "error": null,
-      "ttft_ms": 302.7
+      "ttft_ms": 1744.3
     },
     {
       "model": "glm-4.6",
       "available": true,
       "error": null,
-      "ttft_ms": 821.7
+      "ttft_ms": 1664.6
     },
     {
       "model": "glm-4.7",
       "available": true,
       "error": null,
-      "ttft_ms": 22259.6
+      "ttft_ms": 21808.5
     },
     {
       "model": "glm-5",
@@ -103,13 +103,13 @@
       "model": "gpt-oss:120b",
       "available": true,
       "error": null,
-      "ttft_ms": 520.9
+      "ttft_ms": 799.1
     },
     {
       "model": "gpt-oss:20b",
       "available": true,
       "error": null,
-      "ttft_ms": 539.8
+      "ttft_ms": 565.4
     },
     {
       "model": "kimi-k2-thinking",
@@ -139,19 +139,19 @@
       "model": "minimax-m2",
       "available": true,
       "error": null,
-      "ttft_ms": 892.1
+      "ttft_ms": 2360.3
     },
     {
       "model": "minimax-m2.1",
       "available": true,
       "error": null,
-      "ttft_ms": 653.8
+      "ttft_ms": 637.9
     },
     {
       "model": "minimax-m2.5",
       "available": true,
       "error": null,
-      "ttft_ms": 22105.2
+      "ttft_ms": 792.0
     },
     {
       "model": "minimax-m2.7",
@@ -163,19 +163,19 @@
       "model": "ministral-3:14b",
       "available": true,
       "error": null,
-      "ttft_ms": 425.2
+      "ttft_ms": 491.8
     },
     {
       "model": "ministral-3:3b",
       "available": true,
       "error": null,
-      "ttft_ms": 369.0
+      "ttft_ms": 593.2
     },
     {
       "model": "ministral-3:8b",
       "available": true,
       "error": null,
-      "ttft_ms": 389.0
+      "ttft_ms": 459.9
     },
     {
       "model": "mistral-large-3:675b",
@@ -187,43 +187,43 @@
       "model": "nemotron-3-nano:30b",
       "available": true,
       "error": null,
-      "ttft_ms": 500.7
+      "ttft_ms": 658.8
     },
     {
       "model": "nemotron-3-super",
       "available": true,
       "error": null,
-      "ttft_ms": 741.0
+      "ttft_ms": 572.6
     },
     {
       "model": "qwen3-coder-next",
       "available": true,
       "error": null,
-      "ttft_ms": 2192.1
+      "ttft_ms": 315.2
     },
     {
       "model": "qwen3-coder:480b",
-      "available": false,
-      "error": "",
-      "ttft_ms": null
+      "available": true,
+      "error": null,
+      "ttft_ms": 15197.7
     },
     {
       "model": "qwen3-next:80b",
       "available": true,
       "error": null,
-      "ttft_ms": 3067.8
+      "ttft_ms": 660.2
     },
     {
       "model": "qwen3-vl:235b",
       "available": true,
       "error": null,
-      "ttft_ms": 4115.0
+      "ttft_ms": 8826.4
     },
     {
       "model": "qwen3-vl:235b-instruct",
       "available": true,
       "error": null,
-      "ttft_ms": 629.1
+      "ttft_ms": 618.5
     },
     {
       "model": "qwen3.5:397b",
@@ -235,7 +235,7 @@
       "model": "rnj-1:8b",
       "available": true,
       "error": null,
-      "ttft_ms": 305.6
+      "ttft_ms": 372.6
     }
   ]
 }
