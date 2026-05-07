@@ -6,9 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": null,
-    "tps": null,
-    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
+    "ttft": 0.5663742449999987,
+    "tps": 34.23444466331878
   },
   {
     "model": "deepseek-v4-pro",
@@ -17,8 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.6632698959999743,
-    "tps": 74.33815341500241
+    "ttft": 0.4878461320000014,
+    "tps": 51.256352268875574
   },
   {
     "model": "glm-5.1",
@@ -27,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 14.532782802000042,
-    "tps": 29.477230560251385
+    "ttft": 0.3407059690000054,
+    "tps": 96.4852271210456
   },
   {
     "model": "gemma4:31b",
@@ -37,8 +36,9 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.5711053790000733,
-    "tps": 129.13293368990693
+    "ttft": null,
+    "tps": null,
+    "error": "Server error '500 Internal Server Error' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
   },
   {
     "model": "kimi-k2.6",
@@ -47,8 +47,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 0.7760842999999795,
-    "tps": 19.06537221255306
+    "ttft": 1.4693943139999988,
+    "tps": 75.59477156608405
   },
   {
     "model": "minimax-m2.5",
@@ -57,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 11.869416047999948,
-    "tps": 12.718940665068155
+    "ttft": 9.181485093999996,
+    "tps": 21.5753441524473
   }
 ]
