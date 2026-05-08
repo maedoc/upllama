@@ -6,9 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": null,
-    "tps": null,
-    "error": "Server error '500 Internal Server Error' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    "ttft": 52.648722745,
+    "tps": 8.696779269403535
   },
   {
     "model": "deepseek-v4-flash",
@@ -17,8 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 5.2230404969999995,
-    "tps": 7.807458478866341
+    "ttft": 3.493379396999998,
+    "tps": 24.018735739326004
   },
   {
     "model": "glm-5.1",
@@ -27,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 3.2201462459999846,
-    "tps": 16.018295392877498
+    "ttft": 1.727202407,
+    "tps": 15.901547146296508
   },
   {
     "model": "gemma4:31b",
@@ -37,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.6339694340000221,
-    "tps": 115.83556527857812
+    "ttft": 0.21236009800000488,
+    "tps": 84.30751697955651
   },
   {
     "model": "kimi-k2.6",
@@ -47,8 +46,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 3.3204981979999957,
-    "tps": 44.005817477983015
+    "ttft": 0.7061047330000036,
+    "tps": 65.97796313660052
   },
   {
     "model": "minimax-m2.5",
@@ -57,7 +56,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 0.35798561600000767,
-    "tps": 88.23062985942249
+    "ttft": 7.807090942000002,
+    "tps": 24.552942241695238
   }
 ]
