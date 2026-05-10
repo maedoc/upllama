@@ -1,7 +1,7 @@
 [
   {
-    "model": "deepseek-v4-pro",
-    "size": "1T",
+    "model": "deepseek-v4-flash",
+    "size": "158B",
     "context": "1048576",
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
@@ -11,8 +11,8 @@
     "error": "Client error '429 Too Many Requests' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429"
   },
   {
-    "model": "deepseek-v4-flash",
-    "size": "158B",
+    "model": "deepseek-v4-pro",
+    "size": "1T",
     "context": "1048576",
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
