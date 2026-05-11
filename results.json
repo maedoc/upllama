@@ -6,8 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 7.216783737,
-    "tps": 7.584321710402548
+    "ttft": 115.24087941600001,
+    "tps": 8.115228826371336
   },
   {
     "model": "deepseek-v4-pro",
@@ -16,8 +16,9 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 8.319754013,
-    "tps": 32.07642284761631
+    "ttft": null,
+    "tps": null,
+    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
   },
   {
     "model": "glm-5.1",
@@ -26,8 +27,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 14.591754797000007,
-    "tps": 53.72550837531244
+    "ttft": 1.082267453,
+    "tps": 21.7014147078159
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +37,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.5195563399999941,
-    "tps": 54.49749402212729
+    "ttft": 0.6147725670000028,
+    "tps": 112.8186228387309
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +47,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 17.75974891,
-    "tps": 12.574095243261976
+    "ttft": 2.3714022309999976,
+    "tps": 26.682137440719796
   },
   {
     "model": "minimax-m2.5",
@@ -56,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 0.34411696099999745,
-    "tps": 62.206205937047116
+    "ttft": 0.539586865000004,
+    "tps": 88.06579229489923
   }
 ]
