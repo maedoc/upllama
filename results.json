@@ -1,7 +1,7 @@
 [
   {
-    "model": "deepseek-v4-flash",
-    "size": "158B",
+    "model": "deepseek-v4-pro",
+    "size": "1T",
     "context": "1048576",
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
@@ -11,14 +11,14 @@
     "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
   },
   {
-    "model": "deepseek-v4-pro",
-    "size": "1T",
+    "model": "deepseek-v4-flash",
+    "size": "158B",
     "context": "1048576",
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 32.946427184,
-    "tps": 11.031658890112979
+    "ttft": 57.097451933,
+    "tps": 30.21612888665736
   },
   {
     "model": "glm-5.1",
@@ -27,8 +27,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 2.4527027609999976,
-    "tps": 38.15997164220506
+    "ttft": 1.5261308019999973,
+    "tps": 24.095346719978878
   },
   {
     "model": "gemma4:31b",
@@ -37,8 +37,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.33317375000000027,
-    "tps": 127.63903157613143
+    "ttft": 0.37029926400000335,
+    "tps": 114.73308714534302
   },
   {
     "model": "kimi-k2.6",
@@ -47,8 +47,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 2.9817040390000003,
-    "tps": 24.131584528979047
+    "ttft": 1.1189602290000025,
+    "tps": 61.64006499406044
   },
   {
     "model": "minimax-m2.5",
@@ -57,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 18.130300617000003,
-    "tps": 10.445228950347438
+    "ttft": 2.550978528999991,
+    "tps": 19.49426598013752
   }
 ]
