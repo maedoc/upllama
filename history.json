@@ -1,70 +1,5 @@
 [
   {
-    "timestamp": "2026-05-10T09:09:06.015357+00:00",
-    "results": [
-      {
-        "model": "deepseek-v4-flash",
-        "size": "158B",
-        "context": "1048576",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-24T00:00:00Z",
-        "ttft": 0.6698718480000139,
-        "tps": 53.22762729711426
-      },
-      {
-        "model": "deepseek-v4-pro",
-        "size": "1T",
-        "context": "1048576",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-24T00:00:00Z",
-        "ttft": 0.6542048739999871,
-        "tps": 53.68596945283696
-      },
-      {
-        "model": "glm-5.1",
-        "size": "756B",
-        "context": "202752",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-07T08:00:00-08:00",
-        "ttft": 8.553368936999988,
-        "tps": 24.48774535114313
-      },
-      {
-        "model": "gemma4:31b",
-        "size": "32B",
-        "context": "262144",
-        "quant": "BF16",
-        "capabilities": "completion, thinking, tools, vision",
-        "modified_at": "2026-04-02T09:00:00-08:00",
-        "ttft": 84.31458621800002,
-        "tps": 1.9800519952686764
-      },
-      {
-        "model": "kimi-k2.6",
-        "size": "1T",
-        "context": "262144",
-        "quant": "INT4",
-        "capabilities": "completion, thinking, tools, vision",
-        "modified_at": "2026-03-31T00:00:00Z",
-        "ttft": 1.0157691529999795,
-        "tps": 57.26146828568948
-      },
-      {
-        "model": "minimax-m2.5",
-        "size": "230B",
-        "context": "196608",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-02-12T00:00:00Z",
-        "ttft": 1.0696615559999998,
-        "tps": 58.09618231463825
-      }
-    ]
-  },
-  {
     "timestamp": "2026-05-10T09:59:01.098928+00:00",
     "results": [
       {
@@ -4029,6 +3964,71 @@
         "modified_at": "2026-02-12T00:00:00Z",
         "ttft": 3.3176587440000276,
         "tps": 35.47236913102689
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-12T09:24:00.695087+00:00",
+    "results": [
+      {
+        "model": "deepseek-v4-pro",
+        "size": "1T",
+        "context": "1048576",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-24T00:00:00Z",
+        "ttft": 5.4817795029999985,
+        "tps": 10.465149532548915
+      },
+      {
+        "model": "deepseek-v4-flash",
+        "size": "158B",
+        "context": "1048576",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-24T00:00:00Z",
+        "ttft": 0.6416838210000009,
+        "tps": 66.0836966320872
+      },
+      {
+        "model": "glm-5.1",
+        "size": "756B",
+        "context": "202752",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-07T08:00:00-08:00",
+        "ttft": 0.9209324300000077,
+        "tps": 21.89997695038376
+      },
+      {
+        "model": "gemma4:31b",
+        "size": "32B",
+        "context": "262144",
+        "quant": "BF16",
+        "capabilities": "completion, thinking, tools, vision",
+        "modified_at": "2026-04-02T09:00:00-08:00",
+        "ttft": 0.31495258500000034,
+        "tps": 105.1546090381636
+      },
+      {
+        "model": "kimi-k2.6",
+        "size": "1T",
+        "context": "262144",
+        "quant": "INT4",
+        "capabilities": "completion, thinking, tools, vision",
+        "modified_at": "2026-03-31T00:00:00Z",
+        "ttft": 2.213351547000002,
+        "tps": 55.227958438859886
+      },
+      {
+        "model": "minimax-m2.5",
+        "size": "230B",
+        "context": "196608",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-02-12T00:00:00Z",
+        "ttft": 0.5855744059999779,
+        "tps": 53.1408059391243
       }
     ]
   }
