@@ -6,8 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 9.123785580000003,
-    "tps": 42.294346647115646
+    "ttft": 2.8394269950000037,
+    "tps": 32.114002146803344
   },
   {
     "model": "deepseek-v4-pro",
@@ -16,8 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 7.584910702999991,
-    "tps": 8.82955443411082
+    "ttft": 6.824359837000003,
+    "tps": 32.806835348478415
   },
   {
     "model": "glm-5.1",
@@ -26,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 3.2963818089999677,
-    "tps": 74.77617839511072
+    "ttft": 0.37101539999999744,
+    "tps": 159.0197017677745
   },
   {
     "model": "gemma4:31b",
@@ -38,7 +38,7 @@
     "modified_at": "2026-04-02T09:00:00-08:00",
     "ttft": null,
     "tps": null,
-    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
+    "error": "Stream ended without completion"
   },
   {
     "model": "kimi-k2.6",
@@ -47,8 +47,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 12.734514439000009,
-    "tps": 13.867094670057531
+    "ttft": 61.647635283,
+    "tps": 10.102420376278713
   },
   {
     "model": "minimax-m2.5",
@@ -57,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 2.383344844999897,
-    "tps": 163.01753715601362
+    "ttft": 0.42870322400000305,
+    "tps": 68.58946760816711
   }
 ]
