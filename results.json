@@ -1,23 +1,23 @@
 [
   {
-    "model": "deepseek-v4-pro",
-    "size": "1T",
-    "context": "1048576",
-    "quant": "FP8",
-    "capabilities": "completion, thinking, tools",
-    "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 5.9697693939999965,
-    "tps": 30.076738923847223
-  },
-  {
     "model": "deepseek-v4-flash",
     "size": "158B",
     "context": "1048576",
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 12.204076555,
-    "tps": 23.253466651335195
+    "ttft": 0.5887965130000055,
+    "tps": 37.93963078539959
+  },
+  {
+    "model": "deepseek-v4-pro",
+    "size": "1T",
+    "context": "1048576",
+    "quant": "FP8",
+    "capabilities": "completion, thinking, tools",
+    "modified_at": "2026-04-24T00:00:00Z",
+    "ttft": 9.964240056999998,
+    "tps": 13.179851778468246
   },
   {
     "model": "glm-5.1",
@@ -26,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 1.28843681299999,
-    "tps": 24.31631102825807
+    "ttft": 3.1397964450000018,
+    "tps": 15.318759207577353
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.5954808489999976,
-    "tps": 136.4950841025314
+    "ttft": 0.38684297000000356,
+    "tps": 127.90377683812945
   },
   {
     "model": "kimi-k2.6",
@@ -48,7 +48,7 @@
     "modified_at": "2026-03-31T00:00:00Z",
     "ttft": null,
     "tps": null,
-    "error": "Internal Server Error (ref: bc096504-07fb-4820-bce7-4ce750bb3a28)"
+    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
   },
   {
     "model": "minimax-m2.5",
@@ -57,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 0.5308718850000105,
-    "tps": 87.01941955068362
+    "ttft": 0.3477806480000112,
+    "tps": 37.25417604598588
   }
 ]
