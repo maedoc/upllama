@@ -1,71 +1,5 @@
 [
   {
-    "timestamp": "2026-05-12T12:11:34.115026+00:00",
-    "results": [
-      {
-        "model": "deepseek-v4-flash",
-        "size": "158B",
-        "context": "1048576",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-24T00:00:00Z",
-        "ttft": 5.176410744999991,
-        "tps": 20.296005762551346
-      },
-      {
-        "model": "deepseek-v4-pro",
-        "size": "1T",
-        "context": "1048576",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-24T00:00:00Z",
-        "ttft": null,
-        "tps": null,
-        "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
-      },
-      {
-        "model": "glm-5.1",
-        "size": "756B",
-        "context": "202752",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-04-07T08:00:00-08:00",
-        "ttft": 0.8390544800000015,
-        "tps": 14.830671283581493
-      },
-      {
-        "model": "gemma4:31b",
-        "size": "32B",
-        "context": "262144",
-        "quant": "BF16",
-        "capabilities": "completion, thinking, tools, vision",
-        "modified_at": "2026-04-02T09:00:00-08:00",
-        "ttft": 0.35187059400000464,
-        "tps": 125.83524341245909
-      },
-      {
-        "model": "kimi-k2.6",
-        "size": "1T",
-        "context": "262144",
-        "quant": "INT4",
-        "capabilities": "completion, thinking, tools, vision",
-        "modified_at": "2026-03-31T00:00:00Z",
-        "ttft": 3.54896261399999,
-        "tps": 20.44925791285247
-      },
-      {
-        "model": "minimax-m2.5",
-        "size": "230B",
-        "context": "196608",
-        "quant": "FP8",
-        "capabilities": "completion, thinking, tools",
-        "modified_at": "2026-02-12T00:00:00Z",
-        "ttft": 0.35147970600000633,
-        "tps": 18.473112124194376
-      }
-    ]
-  },
-  {
     "timestamp": "2026-05-12T13:14:00.477517+00:00",
     "results": [
       {
@@ -3323,6 +3257,71 @@
         "modified_at": "2026-02-12T00:00:00Z",
         "ttft": 0.4033218739999995,
         "tps": 47.20152422611009
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-14T12:32:56.499041+00:00",
+    "results": [
+      {
+        "model": "deepseek-v4-pro",
+        "size": "1T",
+        "context": "1048576",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-24T00:00:00Z",
+        "ttft": 6.068321181999998,
+        "tps": 35.045597747950374
+      },
+      {
+        "model": "deepseek-v4-flash",
+        "size": "158B",
+        "context": "1048576",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-24T00:00:00Z",
+        "ttft": 2.5168574539999966,
+        "tps": 52.74762741624909
+      },
+      {
+        "model": "glm-5.1",
+        "size": "756B",
+        "context": "202752",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-04-07T08:00:00-08:00",
+        "ttft": 0.7818525610000009,
+        "tps": 49.42012059562066
+      },
+      {
+        "model": "gemma4:31b",
+        "size": "32B",
+        "context": "262144",
+        "quant": "BF16",
+        "capabilities": "completion, thinking, tools, vision",
+        "modified_at": "2026-04-02T09:00:00-08:00",
+        "ttft": 0.5121964740000067,
+        "tps": 84.07781311678833
+      },
+      {
+        "model": "kimi-k2.6",
+        "size": "1T",
+        "context": "262144",
+        "quant": "INT4",
+        "capabilities": "completion, thinking, tools, vision",
+        "modified_at": "2026-03-31T00:00:00Z",
+        "ttft": 1.1116410590000072,
+        "tps": 66.69305725496105
+      },
+      {
+        "model": "minimax-m2.5",
+        "size": "230B",
+        "context": "196608",
+        "quant": "FP8",
+        "capabilities": "completion, thinking, tools",
+        "modified_at": "2026-02-12T00:00:00Z",
+        "ttft": 0.5268508310000044,
+        "tps": 19.024689420722364
       }
     ]
   }
