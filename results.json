@@ -6,8 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 11.397135727999995,
-    "tps": 17.578502591955445
+    "ttft": 49.913077853000004,
+    "tps": 9.604725116212274
   },
   {
     "model": "deepseek-v4-pro",
@@ -16,8 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 14.357219607999994,
-    "tps": 49.78362254073518
+    "ttft": 37.06419970299999,
+    "tps": 62.36047492983519
   },
   {
     "model": "glm-5.1",
@@ -26,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 19.599698449,
-    "tps": 75.92892235690667
+    "ttft": 27.838278250000002,
+    "tps": 145.4723820066686
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 25.75334189899999,
-    "tps": 42.31325914087644
+    "ttft": 23.042712491000003,
+    "tps": 20.32160639121408
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +46,9 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 21.841778919999996,
-    "tps": 54.922579013958696
+    "ttft": null,
+    "tps": null,
+    "error": "Internal Server Error (ref: d9c6dabb-0c77-4682-96f3-b0651c37dd09)"
   },
   {
     "model": "minimax-m2.5",
@@ -56,7 +57,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 9.965369007000021,
-    "tps": 43.08970257046623
+    "ttft": 17.510867701999985,
+    "tps": 36.884837774430004
   }
 ]
