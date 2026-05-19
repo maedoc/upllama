@@ -6,8 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.5990448870000051,
-    "tps": 49.49563385194687
+    "ttft": 0.5603595889999866,
+    "tps": 38.378846693785476
   },
   {
     "model": "deepseek-v4-flash",
@@ -16,8 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.34710760800000173,
-    "tps": 61.517081858179985
+    "ttft": 0.9235686769999916,
+    "tps": 11.192700333168686
   },
   {
     "model": "glm-5.1",
@@ -26,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 0.9443866080000021,
-    "tps": 66.68255218392046
+    "ttft": 0.7977782939999969,
+    "tps": 50.3575334408471
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.3703681369999998,
-    "tps": 29.467016874391657
+    "ttft": 0.6605027310000082,
+    "tps": 30.314663005306688
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +46,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 6.394008161999999,
-    "tps": 23.163732202948683
+    "ttft": 4.985748352000002,
+    "tps": 23.593739413285867
   },
   {
     "model": "qwen3.5:397b",
@@ -56,8 +56,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-02-16T00:00:00Z",
-    "ttft": 0.36878830100000215,
-    "tps": 45.29785096377212
+    "ttft": 0.44716920999999843,
+    "tps": 91.63325008080977
   },
   {
     "model": "minimax-m2.5",
@@ -66,7 +66,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 1.2188067910000058,
-    "tps": 9.086296979555245
+    "ttft": 0.2739896520000116,
+    "tps": 73.22632767538849
   }
 ]
