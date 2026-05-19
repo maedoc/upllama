@@ -6,8 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 1.5338734589999987,
-    "tps": 20.52954186085023
+    "ttft": 0.6490571319999958,
+    "tps": 51.18330589544479
   },
   {
     "model": "deepseek-v4-flash",
@@ -16,8 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.6484185799999977,
-    "tps": 16.46114570031185
+    "ttft": 0.7357958519999954,
+    "tps": 20.812066316567996
   },
   {
     "model": "glm-5.1",
@@ -26,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 0.9796389669999996,
-    "tps": 61.728602719449135
+    "ttft": 1.0124469159999876,
+    "tps": 40.758128071755685
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.4452510349999983,
-    "tps": 20.23540287447148
+    "ttft": 16.298940956999985,
+    "tps": 4.697878765462781
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +46,9 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 6.309062636999997,
-    "tps": 18.310619067101147
+    "ttft": null,
+    "tps": null,
+    "error": "Server error '503 Service Unavailable' for url 'https://ollama.com/api/chat'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503"
   },
   {
     "model": "qwen3.5:397b",
@@ -56,8 +57,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-02-16T00:00:00Z",
-    "ttft": 10.714820785,
-    "tps": 31.28381567597554
+    "ttft": 18.712374256999993,
+    "tps": 37.770197171465064
   },
   {
     "model": "minimax-m2.5",
@@ -66,7 +67,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 0.34555073599999275,
-    "tps": 36.18602530590105
+    "ttft": 82.89470399299995,
+    "tps": 6.271765608591988
   }
 ]
