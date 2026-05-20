@@ -6,8 +6,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.6014535146666683,
-    "tps": 54.66198317246174
+    "ttft": 0.6394352366666661,
+    "tps": 43.76614511267408
   },
   {
     "model": "deepseek-v4-flash",
@@ -16,8 +16,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-24T00:00:00Z",
-    "ttft": 0.4645578070000009,
-    "tps": 114.16614488876151
+    "ttft": 0.996206346000001,
+    "tps": 85.83172848348731
   },
   {
     "model": "glm-5.1",
@@ -26,8 +26,8 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-04-07T08:00:00-08:00",
-    "ttft": 2.276588233666667,
-    "tps": 65.36148310768154
+    "ttft": 0.4808139120000021,
+    "tps": 163.50902385421998
   },
   {
     "model": "gemma4:31b",
@@ -36,8 +36,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-04-02T09:00:00-08:00",
-    "ttft": 0.7392805749999999,
-    "tps": 50.91305367101305
+    "ttft": 0.44634033800000356,
+    "tps": 56.00320062778264
   },
   {
     "model": "kimi-k2.6",
@@ -46,8 +46,8 @@
     "quant": "INT4",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-03-31T00:00:00Z",
-    "ttft": 1.3495003590000039,
-    "tps": 42.85032487427758
+    "ttft": 0.8565088823333298,
+    "tps": 54.46447179924286
   },
   {
     "model": "minimax-m2.7",
@@ -56,8 +56,8 @@
     "quant": "",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-03-18T00:00:00Z",
-    "ttft": 2.4972189726666634,
-    "tps": 27.20987442175871
+    "ttft": 3.0135731820000067,
+    "tps": 27.723279045868168
   },
   {
     "model": "qwen3.5:397b",
@@ -66,8 +66,8 @@
     "quant": "BF16",
     "capabilities": "completion, thinking, tools, vision",
     "modified_at": "2026-02-16T00:00:00Z",
-    "ttft": 3.666731350666666,
-    "tps": 35.245854364636045
+    "ttft": 5.11720651166667,
+    "tps": 34.652895168313954
   },
   {
     "model": "minimax-m2.5",
@@ -76,7 +76,7 @@
     "quant": "FP8",
     "capabilities": "completion, thinking, tools",
     "modified_at": "2026-02-12T00:00:00Z",
-    "ttft": 2.5519403043333284,
-    "tps": 38.120073644804414
+    "ttft": 0.527347733999998,
+    "tps": 37.541840976499266
   }
 ]
